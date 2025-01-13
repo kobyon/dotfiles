@@ -1,0 +1,13 @@
+# Bash configuration file
+
+# Colorize
+
+
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+
+# Load Alias
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+
+
