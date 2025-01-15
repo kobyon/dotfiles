@@ -1,0 +1,5 @@
+# By default ignore all
+*
+
+# Spesific rules
+*.zcompdump
