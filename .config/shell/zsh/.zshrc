@@ -12,10 +12,7 @@ HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 setopt inc_append_history
 
 # Load aliases and shortcuts if existent.
-#[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
-#[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutenvrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutenvrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
-#[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -23,13 +20,6 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
-
-# Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
 
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.

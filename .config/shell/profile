@@ -21,11 +21,10 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZDOTDIR="$XDG_CONFIG_HOME/shell/zsh"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
-export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
@@ -41,4 +40,4 @@ export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
 
 
 # Source .bashrc if running bash
-[ -n "$BASH_VERSION" ] && source "$XDG_CONFIG_HOME/shell/bash/bashrc"
+[ -n "$BASH_VERSION" ] && . "$XDG_CONFIG_HOME/shell/bash/.bashrc"
