@@ -40,4 +40,4 @@ export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
 
 
 # Source .bashrc if running bash
-[ -n "$BASH_VERSION" ] && . "$XDG_CONFIG_HOME/shell/bash/.bashrc"
+[ -n "$BASH_VERSION" ] && . "$XDG_CONFIG_HOME/shell/bash/bashrc"
