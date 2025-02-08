@@ -11,3 +11,5 @@ alias ls="ls -hN --color=auto --group-directories-first"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ip="ip -color=auto"
+
+alias dotfiles='/usr/bin/git --git-dir="$HOME/.local/src/dotfiles/" --work-tree="$HOME"'
