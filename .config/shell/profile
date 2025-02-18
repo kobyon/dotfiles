@@ -12,7 +12,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # Enviroment Variables
 export EDITOR=nvim
-export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/git"
+#export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/git"
 #export NEXTCLOUD="$HOME/nextcloud"
 #export ONEDRIVE="$HOME/onedrive"
 
