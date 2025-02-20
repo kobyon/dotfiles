@@ -14,7 +14,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export EDITOR=nvim
 #export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/git"
 #export NEXTCLOUD="$HOME/nextcloud"
-#export ONEDRIVE="$HOME/onedrive"
+export ONEDRIVE="$HOME/onedrive"
 
 # Cleanup variables
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"

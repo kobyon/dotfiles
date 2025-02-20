@@ -36,8 +36,7 @@ set paste               " Paste from a windows or from vim
 " Ensure files are read as what I want - LukeSmith
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 " Wiki locations
-	let g:vimwiki_list = [{'path': '$NEXTCLOUD/Notes', 'syntax': 'markdown', 'ext': '.md'},
-	\ {'path': '$ONEDRIVE/Notes', 'syntax': 'markdown', 'ext': '.md'}]
+	let g:vimwiki_list = [{'path': '$ONEDRIVE/Notes', 'syntax': 'markdown', 'ext': '.md'}]
 	let g:vimwiki_markdown_link_ext = 1
 
 " Save file as sudo on files that require root permission
