@@ -14,6 +14,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export EDITOR=nvim
 #export NEXTCLOUD="$HOME/nextcloud"
 export ONEDRIVE="$HOME/onedrive"
+export KB_PATH="${XDG_DOCUMENTS_DIR:-$HOME/documents}/kb"
 
 # Cleanup variables
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"

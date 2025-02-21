@@ -42,7 +42,7 @@ let g:taskwiki_dont_fold=1
 
 " Ensure files are read as what I want - LukeSmith
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	let g:vimwiki_list = [{'path': '$ONEDRIVE/Notes', 'syntax': 'markdown', 'ext': '.md'}]
+	let g:vimwiki_list = [{'path': '$KB_PATH', 'syntax': 'markdown', 'ext': '.md'},{'path': '$ONEDRIVE/Notes', 'syntax': 'markdown', 'ext': '.md'}]
 	let g:vimwiki_markdown_link_ext = 1
 
 " Save file as sudo on files that require root permission
