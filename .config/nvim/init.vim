@@ -10,7 +10,7 @@ endif
 " Plugins
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'vimwiki/vimwiki'
-Plug 'tbabej/taskwiki'
+Plug 'tools-life/taskwiki'
 Plug 'plasticboy/vim-markdown'
 call plug#end()
 
@@ -42,7 +42,7 @@ let g:taskwiki_dont_fold=1
 
 " Ensure files are read as what I want - LukeSmith
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	let g:vimwiki_list = [{'path': '$WIKI_PATH', 'syntax': 'markdown', 'ext': '.md'},{'path': '$ONEDRIVE/Notes', 'syntax': 'markdown', 'ext': '.md'}]
+	let g:vimwiki_list = [{'path': '$WIKI_PATH', 'syntax': 'markdown', 'ext': '.md'},{'path': '$ONEDRIVE/Documents/notes', 'syntax': 'markdown', 'ext': '.md'}]
 	let g:vimwiki_markdown_link_ext = 1
 
 " Save file as sudo on files that require root permission
