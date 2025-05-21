@@ -31,7 +31,7 @@ set spelllang=en_us,en " Setting language
 set spellsuggest=best,9 " At most show 9 suggestions
 
 " Clipbaord options
-set clipboard+=unnamed  " use the clipboards of vim and os
+set clipboard+=unnamedplus  " use the clipboards of vim and os
 set paste               " Paste from a windows or from vim
 
 " Keymappings
