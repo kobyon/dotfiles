@@ -5,7 +5,7 @@
 	`alias dotfiles='/usr/bin/git --git-dir="$HOME/.local/src/dotfiles/" --work-tree="$HOME"'`
 3. Run the following commands:
 ```bash
-mkdir ~/.local/src/dotfiles
+mkdir -p ~/.local/src/dotfiles
 dotfiles init
 dotfiles remote add origin git@github.com:Aresime/dotfiles.git
 dotfiles fetch

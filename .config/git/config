@@ -1,9 +1,10 @@
 [user]
 	email = 77970971+Aresime@users.noreply.github.com
 	name = Aresime
+	signingkey = /home/ctrl/.ssh/id_rsa.pub
 [color]
 	ui = auto
+[gpg]
+	format = ssh
 [commit]
 	gpgsign = true
-[tag]
-	gpgSign = true
