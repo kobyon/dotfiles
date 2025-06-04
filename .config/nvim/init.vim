@@ -42,7 +42,12 @@ let g:taskwiki_dont_fold=1
 
 " Ensure files are read as what I want - LukeSmith
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	let g:vimwiki_list = [{'path': '$WIKI_PATH', 'syntax': 'markdown', 'ext': '.md'},{'path': '$ONEDRIVE/Documents/notes', 'syntax': 'markdown', 'ext': '.md'}]
+" Wikis list.  First wiki is default, should be system linked to the real location on each individual system.  The others are all the others synced with each cloud provider
+	let g:vimwiki_list = [
+		\ {'path': '$HOME/documents/wiki', 'syntax': 'markdown', 'ext': '.md'},
+		\ {'path': '$PROTON/wiki', 'syntax': 'markdown', 'ext': '.md'},
+		\ {'path': '$ONEDRIVE/Documents/wiki', 'syntax': 'markdown', 'ext': '.md'}
+		\ ]
 	let g:vimwiki_markdown_link_ext = 1
 
 " Save file as sudo on files that require root permission
