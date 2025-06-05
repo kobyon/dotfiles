@@ -1,10 +1,18 @@
+# Github settings as default
 [user]
 	email = 77970971+Aresime@users.noreply.github.com
 	name = Aresime
-	signingkey = /home/ctrl/.ssh/id_rsa.pub
+	signingkey = ~/.ssh/id_rsa.pub
 [color]
 	ui = auto
 [gpg]
 	format = ssh
 [commit]
 	gpgsign = true
+
+
+# Overwrite the default config
+[includeIf "gitdir:sakkenix/"]
+  path = config-sakkenix
+[includeIf "gitdir:upheads/"]
+  path = config-upheads
