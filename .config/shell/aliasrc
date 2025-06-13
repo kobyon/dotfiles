@@ -4,6 +4,8 @@ for command in mount umount sv pacman apt updatedb su shutdown poweroff reboot ;
 done; unset command
 
 alias vim="nvim"
+alias nvchad="NVIM_APPNAME=nvim-nvchad ${HOME}/.local/bin/nvim.appimage"
+
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -vI"
