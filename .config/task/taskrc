@@ -4,4 +4,4 @@ hooks.location=$XDG_CONFIG_HOME/task/hooks
 
 news.version=2.6.0
 uda.priority.values=H,M,,L
-urgency.coefficient.project.timer=0.0
+urgency.scheduled.coefficient = -0.5
