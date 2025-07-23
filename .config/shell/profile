@@ -43,7 +43,8 @@ export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config"
 export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
-
+export _JAVA_OPTIONS=-Djavafx.cachedir="$XDG_CACHE_HOME"/openjfx
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 
 # Source .bashrc if running bash
 [ -n "$BASH_VERSION" ] && . "$XDG_CONFIG_HOME/shell/bash/bashrc"

@@ -1,7 +1,7 @@
 # Github settings as default
 [user]
-	email = 77970971+Aresime@users.noreply.github.com
-	name = Aresime
+	email = 77970971+tastatur-troll@users.noreply.github.com
+	name = tastatur-troll
 	signingkey = ~/.ssh/id_rsa.pub
 [color]
 	ui = auto
