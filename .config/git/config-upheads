@@ -1,4 +1,4 @@
 [user]
 	email = oliver.sakkestad@upheads.no
 	name = Oliver Sakkestad
-	signingkey = ~/.ssh/id_rsa.pub
+	signingkey = ~/.ssh/git-upheads.pub
