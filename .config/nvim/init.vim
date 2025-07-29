@@ -9,7 +9,7 @@ endif
 
 " Plugins
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 "Plug 'tools-life/taskwiki'
 Plug 'plasticboy/vim-markdown'
 call plug#end()
@@ -38,17 +38,17 @@ set paste               " Paste from a windows or from vim
 map <esc> :noh <CR>
 
 " Dissable autofolding after installing task wiki
-let g:taskwiki_dont_fold=1
+"let g:taskwiki_dont_fold=1
 
 " Ensure files are read as what I want - LukeSmith
-	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+"let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 " Wikis list.  First wiki is default, should be system linked to the real location on each individual system.  The others are all the others synced with each cloud provider
-	let g:vimwiki_list = [
-		\ {'path': '$HOME/documents/wiki', 'syntax': 'markdown', 'ext': '.md'},
-		\ {'path': '$PROTON/wiki', 'syntax': 'markdown', 'ext': '.md'},
-		\ {'path': '$ONEDRIVE/Documents/wiki', 'syntax': 'markdown', 'ext': '.md'}
-		\ ]
-	let g:vimwiki_markdown_link_ext = 1
+"let g:vimwiki_list = [
+"	\ {'path': '$HOME/documents/wiki', 'syntax': 'markdown', 'ext': '.md'},
+"	\ {'path': '$PROTON/wiki', 'syntax': 'markdown', 'ext': '.md'},
+"	\ {'path': '$ONEDRIVE/Documents/wiki', 'syntax': 'markdown', 'ext': '.md'}
+"	\ ]
+"let g:vimwiki_markdown_link_ext = 1
 
 " Save file as sudo on files that require root permission
 	cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
