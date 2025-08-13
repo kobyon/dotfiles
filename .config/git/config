@@ -1,7 +1,7 @@
 # Github settings as default
 [user]
-	email = 77970971+tastatur-troll@users.noreply.github.com
-	name = tastatur-troll
+	email = 77970971+kobyon@users.noreply.github.com
+	name = kobyon
 	signingkey = ~/.ssh/id_rsa.pub
 [color]
 	ui = auto
