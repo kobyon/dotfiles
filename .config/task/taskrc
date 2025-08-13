@@ -3,5 +3,11 @@ data.location=$XDG_DATA_HOME/task
 hooks.location=$XDG_CONFIG_HOME/task/hooks
 
 news.version=2.6.0
+urgency.scheduled.coefficient = -1
+
+# Priority urgency values
 uda.priority.values=H,M,,L
-urgency.scheduled.coefficient = -0.5
+urgency.uda.priority..coefficient = 1.8
+#urgency.uda.priority.H.coefficient = 6.0
+urgency.uda.priority.L.coefficient = -2
+#urgency.uda.priority.M.coefficient = 3.9
