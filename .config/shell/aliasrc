@@ -18,3 +18,4 @@ alias dotfiles='/usr/bin/git --git-dir="$HOME/.local/src/dotfiles/" --work-tree=
 
 alias voxbox='docker run -it --rm -v ${PWD}:/repo --entrypoint "" voxpupuli/voxbox:7'
 alias voxbox-rake='docker run -it --rm -v ${PWD}:/repo --entrypoint "rake" voxpupuli/voxbox:7 -f /Rakefile'
+alias search='grep -I -r -n --exclude-dir=_archive --exclude-dir=.git'
