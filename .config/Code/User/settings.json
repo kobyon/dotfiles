@@ -1,0 +1,44 @@
+{
+    "telemetry.telemetryLevel": "off",
+    "telemetry.feedback.enabled": false,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "omnisharp.enableTelemetry": false,
+    "powershell.telemetry.enable": false,
+    "pylance.telemetry": false,
+    "python.telemetry.enable": false,
+    "debugpy.telemetry.enable": false,
+
+    "workbench.enableExperiments": false,
+
+    "git.autofetch": true,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    "explorer.confirmDelete": false,
+
+    "gitlab.duoCodeSuggestions.enabled": false,
+    "gitlab.duoChat.enabled": false,
+    "gitlab.duoAgentPlatform.enabled": false,
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "git.confirmSync": false,
+    "explorer.confirmDragAndDrop": false
+}
