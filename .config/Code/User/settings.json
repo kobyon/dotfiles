@@ -1,4 +1,6 @@
 {
+    "editor.fontFamily": "'0xProto Nerd Font Mono','Droid Sans Mono', 'monospace', monospace",
+
     "telemetry.telemetryLevel": "off",
     "telemetry.feedback.enabled": false,
     "telemetry.enableCrashReporter": false,
@@ -18,7 +20,7 @@
         "markdown": false,
         "scminput": false
     },
-    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.ignoreTrimWhitespace": true,
 
     "explorer.confirmDelete": false,
 
@@ -40,5 +42,6 @@
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
     "git.confirmSync": false,
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "diffEditor.hideUnchangedRegions.enabled": true
 }
