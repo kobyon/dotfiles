@@ -20,7 +20,7 @@
         "markdown": false,
         "scminput": false
     },
-    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
 
     "explorer.confirmDelete": false,
 
@@ -43,5 +43,6 @@
     },
     "git.confirmSync": false,
     "explorer.confirmDragAndDrop": false,
-    "diffEditor.hideUnchangedRegions.enabled": true
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "database-client.autoSync": false
 }
