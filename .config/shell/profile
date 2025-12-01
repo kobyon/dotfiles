@@ -60,3 +60,4 @@ export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
 
 # Source .bashrc if running bash
 [ -n "$BASH_VERSION" ] && . "$XDG_CONFIG_HOME/shell/bash/bashrc"
+[ -e "${XDG_DATA_HOME}/cargo/env" ] && . "${XDG_DATA_HOME}/cargo/env"
