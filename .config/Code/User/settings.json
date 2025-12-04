@@ -54,5 +54,6 @@
     "git.confirmSync": false,
     "explorer.confirmDragAndDrop": false,
     "diffEditor.hideUnchangedRegions.enabled": true,
-    "database-client.autoSync": false
+    "database-client.autoSync": false,
+    "scm.repositories.selectionMode": "single"
 }
