@@ -46,7 +46,7 @@ let g:taskwiki_dont_fold=1
 	let g:vimwiki_list = [
 		\ {'path': '$HOME/documents/wiki', 'syntax': 'markdown', 'ext': '.md'},
 		\ {'path': '$PROTON/wiki', 'syntax': 'markdown', 'ext': '.md'},
-		\ {'path': '$ONEDRIVE/Documents/wiki', 'syntax': 'markdown', 'ext': '.md'}
+		\ {'path': '$ONEDRIVE/wiki', 'syntax': 'markdown', 'ext': '.md'}
 		\ ]
 	let g:vimwiki_markdown_link_ext = 1
 
