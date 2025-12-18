@@ -10,16 +10,28 @@
     "pylance.telemetry": false,
     "python.telemetry.enable": false,
     "debugpy.telemetry.enable": false,
+    
+    "files.associations": {
+        "*/playbooks/*.yml": "ansible",
+        "*/playbooks/*.yaml": "ansible",
+        "*/hostvars/*.yml": "ansible",
+        "*/group_vars/*.yml": "ansible",
+        "*/tasks/*.yaml": "ansible",
+        "*/tasks/*.yml": "ansible",
+        "*/defaults/*.yaml": "ansible",
+        "*/defaults/*.yml": "ansible",
+        "*/vars/*.yaml": "ansible",
+        "*/vars/*.yml": "ansible",
+        "*/meta/*.yaml": "ansible",
+        "*/meta/*.yml": "ansible",
+        "*/handlers/*.yaml": "ansible",
+        "*/handlers/*.yml": "ansible"
+    }
 
     "workbench.enableExperiments": false,
 
     "git.autofetch": true,
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false
-    },
+    "github.copilot.nextEditSuggestions.enabled": true,
     "github.copilot.chat.commitMessageGeneration.instructions": [
         { "text": "Use conventional commit format: type(scope): description." },
         { "text": "Use imperative mood: 'Add feature' not 'Added feature'." },
@@ -33,6 +45,12 @@
     "diffEditor.ignoreTrimWhitespace": false,
 
     "explorer.confirmDelete": false,
+
+    "ansible.lightspeed.enabled": false,
+    "ansible.lightspeed.suggestions.enabled": false,
+
+    "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
+    "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
 
     "gitlab.duoCodeSuggestions.enabled": false,
     "gitlab.duoChat.enabled": false,
