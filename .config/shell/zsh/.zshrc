@@ -9,7 +9,12 @@ setopt interactive_comments
 HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
+HIST_STAMPS="yyyy-mm-dd"
 setopt inc_append_history
+
+# Oh My Zsh
+KEEP_ZSHRC=false
+#ZSH_THEME=""
 
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
