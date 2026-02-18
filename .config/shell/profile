@@ -8,7 +8,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-[ -e ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs ] && source ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
+[ -e "${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs" ] && . "${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs"
 
 # Enviroment Variables
 export EDITOR="nvim"
