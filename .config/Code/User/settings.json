@@ -25,7 +25,9 @@
         "**/meta/*.yaml": "ansible",
         "**/meta/*.yml": "ansible",
         "**/handlers/*.yaml": "ansible",
-        "**/handlers/*.yml": "ansible"
+        "**/handlers/*.yml": "ansible",
+        "**/includes/*.yaml": "ansible",
+        "**/includes/*.yml": "ansible"
     },
 
     "workbench.enableExperiments": false,
@@ -71,7 +73,6 @@
     },
     "git.confirmSync": false,
     "explorer.confirmDragAndDrop": false,
-    "diffEditor.hideUnchangedRegions.enabled": true,
     "database-client.autoSync": false,
     "scm.repositories.selectionMode": "single"
 }
