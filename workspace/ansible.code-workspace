@@ -1,25 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "sakkenix/ansible"
-		},
-		{
-			"path": "sakkenix/sakkenix-ansible"
-		},
-		{
-			"path": "upheads/upheads-linux-ansible"
-		},
-		{
-			"path": "upheads/upheads-snmp-ansible"
-		},
-		{
-			"path": "upheads/wireguard-ansible"
-		},
-		{
-			"path": "upheads/template-local-ansible"
-		},
-		{
-			"path": "upheads/esta-ansible"
+			"path": "~/.local/src/sakkenix/ansible"
 		}
 	],
 	"settings": {
