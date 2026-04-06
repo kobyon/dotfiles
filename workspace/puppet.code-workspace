@@ -1,16 +1,16 @@
 {
 	"folders": [
 		{
-			"path": "~/.local//upheads/puppet/"
+			"path": "../.local/src/upheads/puppet/"
 		},
 		{
-			"path": "~/.local//query/"
+			"path": "../.local/src/sakkenix/query/"
 		},
 		{
-			"path": "~/.local/cloned/puppetlabs-apache"
+			"path": "../.local/src/cloned/puppetlabs-apache"
 		},
 		{
-			"path": "~/.local/cloned/puppetlabs-ntp"
+			"path": "../.local/src/cloned/puppetlabs-ntp"
 		}
 	],
 	"settings": {

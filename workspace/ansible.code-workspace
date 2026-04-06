@@ -1,7 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "~/.local/src/sakkenix/ansible"
+			"path": "../.local/src/sakkenix/ansible"
 		}
 	],
 	"settings": {
