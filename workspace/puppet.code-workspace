@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "./upheads/puppet/"
+		},
+		{
+			"path": "./query/"
+		},
+		{
+			"path": "cloned/puppetlabs-apache"
+		},
+		{
+			"path": "cloned/puppetlabs-ntp"
+		},
+		{
+			"path": "upheads/ny-puppet"
+		}
+	],
+	"settings": {
+		"puppet.editorService.puppet.version": "8.10.0"
+	}
+}

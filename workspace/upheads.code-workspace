@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "./upheads/"
+		},
+		{
+			"path": "query"
+		}
+	],
+	"settings": {
+		"ansible.python.interpreterPath": "/bin/python3"
+	}
+}
