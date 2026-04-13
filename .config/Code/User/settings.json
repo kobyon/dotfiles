@@ -27,7 +27,9 @@
         "**/handlers/*.yaml": "ansible",
         "**/handlers/*.yml": "ansible",
         "**/includes/*.yaml": "ansible",
-        "**/includes/*.yml": "ansible"
+        "**/includes/*.yml": "ansible",
+        "**/env.*": "dotenv",
+        "**env": "dotenv"
     },
 
     "workbench.enableExperiments": false,
@@ -74,5 +76,7 @@
     "git.confirmSync": false,
     "explorer.confirmDragAndDrop": false,
     "database-client.autoSync": false,
-    "scm.repositories.selectionMode": "single"
+    "scm.repositories.selectionMode": "single",
+    "workbench.secondarySideBar.defaultVisibility": "visible",
+    "chat.viewSessions.orientation": "stacked"
 }
