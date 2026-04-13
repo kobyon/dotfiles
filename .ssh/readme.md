@@ -20,3 +20,10 @@ Individual to each computer.  Should be created individually.
 	`ln -sf <hostname>.pub id_rsa.pub`
 4. Add the public key to dotfiles repo
 	`dotfiles add -f <hostname>.pub`
+
+```shell
+ssh-keygen -t rsa -b 4096 -o -a 100 -f $(hostname -s)
+ln -sf $(hostname -s).pub id_rsa.pub
+ln -sf $(hostname -s) id_rsa
+dotfiles add -f $(hostname -s).pub
+```
