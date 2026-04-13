@@ -10,7 +10,7 @@
     "pylance.telemetry": false,
     "python.telemetry.enable": false,
     "debugpy.telemetry.enable": false,
-    
+
     "files.associations": {
         "**/playbooks/*.yml": "ansible",
         "**/playbooks/*.yaml": "ansible",
