@@ -1,7 +1,13 @@
 {
 	"folders": [
 		{
-			"path": "../.local/src/sakkenix/ansible"
+			"path": "../sakkenix/ansible"
+		},
+		{
+			"path": "../upheads/upheads-linux-ansible"
+		},
+		{
+			"path": "../upheads/upheads-snmp-ansible"
 		}
 	],
 	"settings": {
