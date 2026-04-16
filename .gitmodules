@@ -1,3 +1,0 @@
-[submodule ".cache/inventory"]
-	path = .cache/inventory
-	url = ssh://git@codeberg.org/kobyon/ssh-config.git
