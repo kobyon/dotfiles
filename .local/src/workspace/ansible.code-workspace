@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../upheads/upheads-snmp-ansible"
+		},
+		{
+			"path": "../../.config/ansible/inventory"
 		}
 	],
 	"settings": {
