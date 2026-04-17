@@ -1,7 +1,7 @@
 # sudo not required for some system commands
-for command in mount umount sv pacman apt updatedb su shutdown poweroff reboot ; do
-	alias $command="sudo $command"
-done; unset command
+for sudo_command in mount umount sv pacman apt updatedb su shutdown poweroff reboot ; do
+	alias ${sudo_command}="sudo ${sudo_command}"
+done; unset sudo_command
 
 alias vim="nvim"
 alias nvchad="NVIM_APPNAME=nvim-nvchad ${HOME}/.local/bin/nvim.appimage"
@@ -16,6 +16,11 @@ alias ls="ls -hN --color=auto --group-directories-first"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ip="ip -color=auto"
+
+for ansible_command in ansible ansible-playbook ansible-inventory ; do
+	alias ${ansible_command}="${ansible_command} --inventory=${ANSIBLE_INVENTORY} --inventory=./inventory/"
+done; unset ansible_command
+
 
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.local/share/dotfiles/git" --work-tree="$HOME"'
 
