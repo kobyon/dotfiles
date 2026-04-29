@@ -5,6 +5,7 @@ export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 
 # Add go installation to path
 [ -d /usr/local/go/bin ] && export PATH=${PATH}:/usr/local/go/bin
+[ -d "${CARGO_HOME}/bin" ] && export PATH="${PATH}:${CARGO_HOME}/bin"
 
 # Set XDG variables
 export XDG_CACHE_HOME="$HOME/.cache"
