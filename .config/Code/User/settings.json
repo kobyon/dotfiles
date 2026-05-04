@@ -35,6 +35,7 @@
     "workbench.enableExperiments": false,
 
     "git.autofetch": true,
+    "git.addAICoAuthor": "off",
     "github.copilot.nextEditSuggestions.enabled": true,
     "github.copilot.chat.commitMessageGeneration.instructions": [
         { "text": "Use conventional commit format: type(scope): description." },
