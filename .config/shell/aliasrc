@@ -26,5 +26,8 @@ alias dotfiles='/usr/bin/git --git-dir="$HOME/.local/share/dotfiles/git" --work-
 
 alias voxbox='podman run -it --rm -v ${PWD}:/repo --entrypoint "" voxpupuli/voxbox:8'
 alias voxbox-rake='podman run -it --rm -v ${PWD}:/repo --entrypoint "rake" voxpupuli/voxbox:8 -f /Rakefile'
-alias voxbox-sh='podman run -it --rm -v ${PWD}:/repo --entrypoint "ash" ghcr.io/voxpupuli/voxbox:8'
+alias voxbox-sh='podman run -it --rm \
+-v ${PWD}:/repo \
+-v ${PWD}:/etc/puppetlabs/code/environments/production \
+--entrypoint "ash" ghcr.io/voxpupuli/voxbox:8'
 alias search='grep -I -r -n --exclude-dir=_archive --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.venv'
