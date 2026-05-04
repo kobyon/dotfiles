@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "../../.config/ansible/inventory"
+		},
+		{
+			"path": "../sakkenix/ssh-conf"
 		}
 	],
 	"settings": {

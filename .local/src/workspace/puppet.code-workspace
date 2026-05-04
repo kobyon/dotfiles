@@ -11,10 +11,12 @@
 		},
 		{
 			"path": "../cloned/puppetlabs-ntp"
+		},
+		{
+			"path": "../cloned/puppet-cron"
 		}
 	],
 	"settings": {
-		"puppet.editorService.puppet.version": "8.10.0",
 		"markdown.validate.enabled": true
 	}
 }
