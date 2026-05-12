@@ -23,6 +23,7 @@ alias ip="ip -color=auto"
 
 
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.local/share/dotfiles/git" --work-tree="$HOME"'
+alias ijust='just --justfile ${HOME}/justfile'
 
 alias voxbox='podman run -it --rm -v ${PWD}:/repo --entrypoint "" voxpupuli/voxbox:8'
 alias voxbox-rake='podman run -it --rm -v ${PWD}:/repo --entrypoint "rake" voxpupuli/voxbox:8 -f /Rakefile'
