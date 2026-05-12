@@ -17,9 +17,9 @@ alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ip="ip -color=auto"
 
-for ansible_command in ansible ansible-playbook ansible-inventory ; do
-	alias ${ansible_command}="${ansible_command} --inventory=${ANSIBLE_INVENTORY} --inventory=./inventory/ --inventory=${ANSIBLE_INVENTORY}/99-overrides"
-done; unset ansible_command
+#for ansible_command in ansible ansible-playbook ansible-inventory ; do
+#	alias ${ansible_command}="${ansible_command} --inventory=${ANSIBLE_INVENTORY} --inventory=./inventory/ --inventory=${ANSIBLE_INVENTORY}/99-overrides"
+#done; unset ansible_command
 
 
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.local/share/dotfiles/git" --work-tree="$HOME"'

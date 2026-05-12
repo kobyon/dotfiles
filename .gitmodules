@@ -1,3 +1,0 @@
-[submodule ".local/share/inventory"]
-	path = .local/share/inventory
-	url = ssh://git@codeberg.org/kobyon/inventory.git

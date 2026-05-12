@@ -10,9 +10,6 @@
 			"path": "../upheads/upheads-snmp-ansible"
 		},
 		{
-			"path": "../../.config/ansible/inventory"
-		},
-		{
 			"path": "../sakkenix/ssh-conf"
 		}
 	],
