@@ -1,0 +1,3 @@
+[submodule ".config/ansible/roles/ansible-puppetmaster"]
+	path = .config/ansible/roles/ansible-puppetmaster
+	url = ssh://git@codeberg.org/kobyon/ansible-puppetmaster.git

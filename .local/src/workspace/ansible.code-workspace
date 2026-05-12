@@ -7,10 +7,7 @@
 			"path": "../upheads/upheads-linux-ansible"
 		},
 		{
-			"path": "../upheads/upheads-snmp-ansible"
-		},
-		{
-			"path": "../sakkenix/ssh-conf"
+			"path": "../../.config/ansible/roles"
 		}
 	],
 	"settings": {
