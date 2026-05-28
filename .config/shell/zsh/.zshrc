@@ -15,13 +15,8 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
 # the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
 
-# Load aliases and shortcuts if existent.
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
 # Enable colors and change prompt:
 #autoload -U colors && colors	# Load colors
