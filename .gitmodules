@@ -1,3 +1,6 @@
 [submodule ".config/ansible/roles/ansible-puppetmaster"]
 	path = .config/ansible/roles/ansible-puppetmaster
 	url = ssh://git@codeberg.org/kobyon/ansible-puppetmaster.git
+[submodule ".config/shell/zsh/custom/themes/powerlevel10k"]
+	path = .config/shell/zsh/custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
