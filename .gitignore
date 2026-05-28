@@ -3,3 +3,8 @@
 
 # Spesific rules
 *.zcompdump
+!.config/
+!.config/shell/
+!.config/shell/zsh/
+!.config/shell/zsh/custom/
+!.config/shell/zsh/custom/*.zsh
