@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../../.config/ansible/roles"
+		},
+		{
+			"path": "../sakkenix/inventory"
 		}
 	],
 	"settings": {

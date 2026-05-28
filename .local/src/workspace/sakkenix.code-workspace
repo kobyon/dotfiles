@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "../sakkenix/"
+		},
+		{
+			"path": "../../sync/diary/templates"
 		}
 	],
 	"settings": {}
