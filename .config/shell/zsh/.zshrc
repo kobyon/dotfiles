@@ -1,6 +1,3 @@
-# Oh My Zsh
-export ZSH="${ZSH:-$ZDOTDIR/oh-my-zsh}"
-
 # Set Oh My Zsh settings here
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Settings
 KEEP_ZSHRC=true
@@ -56,6 +53,5 @@ bindkey '^[[1;5C' forward-word
 # Load syntax highlighting; should be last.
 #source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 
-export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
