@@ -1,6 +1,8 @@
 # Github settings as default
 [user]
 	signingkey = ~/.ssh/id_rsa.pub
+	name = kobyon
+	email = oliver@sakkenix.cloud
 [color]
 	ui = auto
 [gpg]
