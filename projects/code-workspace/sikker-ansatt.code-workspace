@@ -1,7 +1,16 @@
 {
 	"folders": [
 		{
-			"path": "../upheads/sikker-ansatt"
+			"path": "../upheads/sikker-ansatt-linux-policies"
+		},
+		{
+			"path": "../upheads/sikker-ansatt-linux"
+		},
+		{
+			"path": "../cloned/shell-intune-samples"
+		},
+		{
+			"path": "../cloned/mdatp-xplat"
 		}
 	]
 }
