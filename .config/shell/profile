@@ -76,8 +76,10 @@ export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 
 [ -d /usr/local/go/bin ] && export PATH=${PATH}:/usr/local/go/bin # GO
 [ -d "${CARGO_HOME}/bin" ] && export PATH="${PATH}:${CARGO_HOME}/bin" # Rust / Cargo
+[ -e "${XDG_DATA_HOME}/cargo/env" ] && . "${XDG_DATA_HOME}/cargo/env"
 [ -d "$HOME/.lmstudio/bin" ] && export PATH="${PATH}:$HOME/.lmstudio/bin" # LM Studio
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Source .bashrc if running bash
 [ -n "$BASH_VERSION" ] && . "$XDG_CONFIG_HOME/shell/bash/bashrc"
-[ -e "${XDG_DATA_HOME}/cargo/env" ] && . "${XDG_DATA_HOME}/cargo/env"
