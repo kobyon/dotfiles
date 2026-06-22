@@ -27,5 +27,5 @@ ansible-apply-role host role:
 ansible-inventory:
 	ansible-inventory -i {{ inventory }} --list
 
-run-on-server host command:
-	ssh {{host}} "{{command}}"
+run-on-server host +command:
+	ssh {{host}} {{command}}
