@@ -35,3 +35,8 @@ install-ruby:
 	mkdir -p "${RBENV_ROOT}"
 	git clone https://github.com/rbenv/rbenv.git "${RBENV_ROOT}"
 	git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+	print "%s" "List installable ruby versions by running: rbenv install -l"
+	print "%s" "Install ruby version by running: rbenv install <version>"
+	print "%s" "Set global ruby version by running: rbenv global <version>"
+	print "%s" "Set local ruby version by running: rbenv local <version>"
+	print "%s" "Install bundler by running: gem install bundler"
