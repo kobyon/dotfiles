@@ -31,7 +31,7 @@ run-on-server host +command:
 	ssh {{host}} {{command}}
 
 install-ruby:
-	sudo apt install
+	sudo apt-get install build-essential autoconf libssl-dev libyaml-dev zlib1g-dev libffi-dev libgmp-dev rustc
 	mkdir -p "${RBENV_ROOT}"
 	git clone https://github.com/rbenv/rbenv.git "${RBENV_ROOT}"
 	git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
