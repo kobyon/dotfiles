@@ -29,3 +29,9 @@ ansible-inventory:
 
 run-on-server host +command:
 	ssh {{host}} {{command}}
+
+install-ruby:
+	sudo apt install
+	mkdir -p "${RBENV_ROOT}"
+	git clone https://github.com/rbenv/rbenv.git "${RBENV_ROOT}"
+	git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
