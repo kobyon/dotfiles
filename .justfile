@@ -44,7 +44,10 @@ install-ruby:
 dot-pull:
   /usr/bin/git \
   --git-dir="${HOME}/.local/share/dotfiles/git" \
-  --work-tree="${HOME}" pull --rebase --autostash
+  --work-tree="${HOME}" \
+  pull \
+  --rebase \
+  --autostash
 
 update-ansible-config:
   ansible-playbook playbooks/group-${hostname -s }.yaml --ask-become-pass
