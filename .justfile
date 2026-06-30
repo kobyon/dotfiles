@@ -42,7 +42,9 @@ install-ruby:
 	print "%s" "Install bundler by running: gem install bundler"
 
 dot-pull:
-  dotfiles pull
+  /usr/bin/git \
+  --git-dir="${HOME}/.local/share/dotfiles/git" \
+  --work-tree="${HOME}" pull --rebase --autostash
 
 update-ansible-config:
   ansible-playbook playbooks/group-${hostname -s }.yaml --ask-become-pass

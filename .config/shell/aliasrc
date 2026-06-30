@@ -21,8 +21,6 @@ alias ip="ip -color=auto"
 #	alias ${ansible_command}="${ansible_command} --inventory=${ANSIBLE_INVENTORY} --inventory=./inventory/ --inventory=${ANSIBLE_INVENTORY}/99-overrides"
 #done; unset ansible_command
 
-
-alias dotfiles='/usr/bin/git --git-dir="$HOME/.local/share/dotfiles/git" --work-tree="$HOME"'
 alias ijust='just --justfile ${HOME}/justfile'
 
 alias voxbox='podman run -it --rm -v ${PWD}:/repo --entrypoint "" voxpupuli/voxbox:8'
