@@ -50,9 +50,12 @@ dot-pull:
   --autostash
 
 update-ansible-config:
-	[ -e "${XDG_PROJECTS_DIR:=${HOME}/projects}/ansible/playbooks/host-$(hostname -s).yaml" ] \
-	  || printf "%s\n" \
-	  "Cannot find host ansible file $(hostname -s)..."
+	if [ ! -e "${XDG_PROJECTS_DIR:=${HOME}/projects}/ansible/playbooks/host-$(hostname -s).yaml" ]; then \
+	  printf "%s\n" "Cannot find host ansible file $(hostname -s)..."; \
+	  exit 1; \
+	fi
+
+	git -C "${XDG_PROJECTS_DIR:=${HOME}/projects}/ansible" pull --rebase --autostash
 
 	ansible-playbook \
 	"${XDG_PROJECTS_DIR:=${HOME}/projects}/ansible/playbooks/host-$(hostname -s).yaml" \
