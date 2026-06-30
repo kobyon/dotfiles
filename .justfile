@@ -48,8 +48,7 @@ dot-pull:
 
 update-ansible-config:
   ansible-playbook playbooks/group-${hostname -s }.yaml --ask-become-pass
-  dot-pull
 
 update:
-  update-ansible-config
-  dot-pull
+  ijust update-ansible-config
+  ijust dot-pull
