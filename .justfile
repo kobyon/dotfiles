@@ -50,8 +50,8 @@ dot-pull:
   --autostash
 
 update-ansible-config:
-  ansible-playbook playbooks/group-${hostname -s }.yaml --ask-become-pass
+	[ -e "${XDG_PROJECTS_DIR:=${HOME}/projects}/ansible/playbooks/host-$(hostname -s).yaml" ] || \
+	  printf "%s\n" "Cannot find host ansible file $(hostname -s)..."
+	ansible-playbook "${XDG_PROJECTS_DIR:=${HOME}/projects}/ansible/playbooks/host-$(hostname -s).yaml" --ask-become-pass
 
-update:
-  ijust update-ansible-config
-  ijust dot-pull
+update: dot-pull update-ansible-config
