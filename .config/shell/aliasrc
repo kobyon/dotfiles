@@ -17,7 +17,7 @@ alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ip="ip -color=auto"
 
-alias ijust='just --justfile ${HOME}/justfile'
+alias ijust='just --justfile ${HOME}/.justfile'
 
 alias voxbox='podman run -it --rm -v ${PWD}:/repo --entrypoint "" voxpupuli/voxbox:8'
 alias voxbox-rake='podman run -it --rm -v ${PWD}:/repo --entrypoint "rake" voxpupuli/voxbox:8 -f /Rakefile'
