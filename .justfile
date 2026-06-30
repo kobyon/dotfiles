@@ -40,3 +40,14 @@ install-ruby:
 	print "%s" "Set global ruby version by running: rbenv global <version>"
 	print "%s" "Set local ruby version by running: rbenv local <version>"
 	print "%s" "Install bundler by running: gem install bundler"
+
+dot-pull:
+  dotfiles pull
+
+update-ansible-config:
+  ansible-playbook playbooks/group-${hostname -s }.yaml --ask-become-pass
+  dot-pull
+
+update:
+  update-ansible-config
+  dot-pull
