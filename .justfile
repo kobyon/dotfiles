@@ -50,8 +50,13 @@ dot-pull:
   --autostash
 
 update-ansible-config:
-	[ -e "${XDG_PROJECTS_DIR:=${HOME}/projects}/ansible/playbooks/host-$(hostname -s).yaml" ] || \
-	  printf "%s\n" "Cannot find host ansible file $(hostname -s)..."
-	ansible-playbook "${XDG_PROJECTS_DIR:=${HOME}/projects}/ansible/playbooks/host-$(hostname -s).yaml" --ask-become-pass
+	[ -e "${XDG_PROJECTS_DIR:=${HOME}/projects}/ansible/playbooks/host-$(hostname -s).yaml" ] \
+	  || printf "%s\n" \
+	  "Cannot find host ansible file $(hostname -s)..."
+
+	ansible-playbook \
+	"${XDG_PROJECTS_DIR:=${HOME}/projects}/ansible/playbooks/host-$(hostname -s).yaml" \
+	--ask-become-pass \
+	-e "file_header_hash=\"################################################################\\n# DO NOT EDIT - Managed by ansible!\\n# \\n# Host            : \{\{ inventory_hostname_short \}\} (\{\{ inventory_hostname \}\})\\n# Deployed by     : \{\{ playbook_runner \}\}\\n# Ansible version : \{\{ ansible_version.full \}\}\\n# Playbook path   : \{\{ playbook_name \}\}\\n# Play            : \{\{ ansible_play_name \}\}\\n# Host groups     : \{\{ group_names \}\}\\n#\\n# DO NOT EDIT - Managed by ansible!\\n################################################################\\n\""
 
 update: dot-pull update-ansible-config
