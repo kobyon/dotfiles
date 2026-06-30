@@ -17,10 +17,6 @@ alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ip="ip -color=auto"
 
-#for ansible_command in ansible ansible-playbook ansible-inventory ; do
-#	alias ${ansible_command}="${ansible_command} --inventory=${ANSIBLE_INVENTORY} --inventory=./inventory/ --inventory=${ANSIBLE_INVENTORY}/99-overrides"
-#done; unset ansible_command
-
 alias ijust='just --justfile ${HOME}/justfile'
 
 alias voxbox='podman run -it --rm -v ${PWD}:/repo --entrypoint "" voxpupuli/voxbox:8'
