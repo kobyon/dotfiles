@@ -35,7 +35,6 @@
     "workbench.enableExperiments": false,
 
     "git.autofetch": true,
-    "git.addAICoAuthor": "off",
     "github.copilot.nextEditSuggestions.enabled": true,
     "github.copilot.chat.commitMessageGeneration.instructions": [
         { "text": "Use conventional commit format: type(scope): description." },
@@ -79,5 +78,8 @@
     "database-client.autoSync": false,
     "scm.repositories.selectionMode": "single",
     "workbench.secondarySideBar.defaultVisibility": "visible",
-    "chat.viewSessions.orientation": "stacked"
+    "chat.viewSessions.orientation": "stacked",
+
+    "chat.mcp.gallery.enabled": true,
+    "chat.remoteAgentHosts": []
 }
