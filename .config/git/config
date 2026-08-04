@@ -13,5 +13,7 @@
 # Overwrite the default config
 [includeIf "gitdir:sakkenix/"]
   path = config-sakkenix
+[includeIf "gitdir:dotfiles/"]
+  path = config-sakkenix
 [includeIf "gitdir:upheads/"]
   path = config-upheads

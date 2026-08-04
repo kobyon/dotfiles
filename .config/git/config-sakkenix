@@ -1,3 +1,10 @@
 [user]
-	email = oliver.sakkestad@upheads.no
+	signingkey = ~/.ssh/kobyon.pub
 	name = kobyon
+	email = oliver@sakkenix.cloud
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[core]
+	sshCommand = ssh -i ~/.ssh/kobyon.pub
