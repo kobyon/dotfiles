@@ -1,0 +1,55 @@
+{
+	"servers": {
+		"searxng": {
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-e",
+				"SEARXNG_URL",
+				"docker.io/isokoliuk/mcp-searxng:latest"
+			],
+			"env": {
+				"SEARXNG_URL": "https://search.sakkenix.cloud/"
+			},
+			"type": "stdio"
+		},
+		"grafana": {
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-e",
+				"GRAFANA_URL",
+				"-e",
+				"GRAFANA_SERVICE_ACCOUNT_TOKEN",
+				"docker.io/grafana/mcp-grafana",
+				"-t",
+				"stdio"
+			],
+			"env": {
+				"GRAFANA_URL": "https://graph.sakkenix.cloud/",
+				"GRAFANA_SERVICE_ACCOUNT_TOKEN": "glsa_ZBmZvLtlcm4y9xndwUUEZd4REgoUa5IU_56c73a75"
+			},
+			"type": "stdio"
+		},
+		"prometheus": {
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-e",
+				"PROMETHEUS_URL",
+				"ghcr.io/pab1it0/prometheus-mcp-server:latest"
+			],
+			"env": {
+				"PROMETHEUS_URL": "https://prometheus.sakkenix.cloud/"
+			},
+			"type": "stdio"
+		}
+	},
+	"inputs": []
+}
