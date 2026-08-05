@@ -81,6 +81,7 @@ export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 [ -d "$HOME/.lmstudio/bin" ] && export PATH="${PATH}:$HOME/.lmstudio/bin" # LM Studio
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -e "${XDG_DATA_HOME}/rbenv/bin/rbenv" ] && eval "$(${XDG_DATA_HOME}/rbenv/bin/rbenv init - --no-rehash zsh)"
 
 # Source .bashrc if running bash
 [ -n "$BASH_VERSION" ] && . "$XDG_CONFIG_HOME/shell/bash/bashrc"
