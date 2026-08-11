@@ -1,7 +1,7 @@
 # Github settings as default
 [user]
 	signingkey = ~/.ssh/id_rsa.pub
-	name = kobyon
+	name = oliver
 	email = oliver@sakkenix.cloud
 [color]
 	ui = auto
@@ -9,11 +9,3 @@
 	format = ssh
 [commit]
 	gpgsign = true
-
-# Overwrite the default config
-[includeIf "gitdir:sakkenix/"]
-  path = config-sakkenix
-[includeIf "gitdir:dotfiles/"]
-  path = config-sakkenix
-[includeIf "gitdir:upheads/"]
-  path = config-upheads
