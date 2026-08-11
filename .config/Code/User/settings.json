@@ -53,9 +53,6 @@
     "ansible.lightspeed.enabled": false,
     "ansible.lightspeed.suggestions.enabled": false,
 
-    "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
-    "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
-
     "gitlab.duoCodeSuggestions.enabled": false,
     "gitlab.duoChat.enabled": false,
     "gitlab.duoAgentPlatform.enabled": false,
@@ -76,7 +73,6 @@
     "git.confirmSync": false,
     "explorer.confirmDragAndDrop": false,
     "database-client.autoSync": false,
-    "scm.repositories.selectionMode": "single",
     "workbench.secondarySideBar.defaultVisibility": "visible",
     "chat.viewSessions.orientation": "stacked",
 
@@ -89,5 +85,8 @@
         "**/.gitea/workflows/*.yaml",
         "**/.forgejo/workflows/*.yml",
         "**/.forgejo/workflows/*.yaml"
-    ]
+    ],
+    "claudeCode.preferredLocation": "panel",
+    "claudeCode.useTerminal": true,
+    "scm.repositories.selectionMode": "single"
 }
