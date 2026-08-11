@@ -3,5 +3,6 @@
 		{
 			"path": "ws-puppet-staging"
 		}
-	]
+	],
+	"settings": {}
 }
