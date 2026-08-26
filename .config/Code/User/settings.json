@@ -88,5 +88,12 @@
     ],
     "claudeCode.preferredLocation": "panel",
     "claudeCode.useTerminal": true,
-    "scm.repositories.selectionMode": "single"
+    "scm.repositories.selectionMode": "single",
+    "vim.useSystemClipboard": true,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    }
 }
