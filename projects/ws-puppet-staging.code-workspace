@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "ws-puppet-staging"
+		},
+		{
+			"path": "query"
 		}
 	],
 	"settings": {}
