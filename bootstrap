@@ -1,0 +1,11 @@
+#!/bin/sh
+
+install_paru() {
+    paru_install_dir=$(mktemp -d)
+
+    git clone https://aur.archlinux.org/paru.git "${paru_install_dir}"
+    cd "${paru_install_dir}" || exit
+    makepkg -si
+}
+
+install_paru
