@@ -1,0 +1,3 @@
+#!/bin/sh
+sakkenix-bootstrap || echo "sakkenix: bootstrap failed, starting shell anyway" >&2
+exec "$@"
