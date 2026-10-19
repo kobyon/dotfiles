@@ -88,8 +88,7 @@ docker run --user $(id -u):$(id -g) sakkenix-base:latest
 ## Examples
 
 See the `examples/` directory for:
-- `docker-compose.yml` - Example orchestration with SSH agent and Docker socket
-- `setup.sh` - Helper script to detect host configuration
+- `docker-compose.yaml` - Example orchestration with SSH agent and Docker socket
 
 ## File Structure
 
