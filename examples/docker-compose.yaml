@@ -15,7 +15,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # Docker socket for DooD (Docker-outside-Docker)
       - ${SSH_AUTH_SOCK}:/run/ssh-agent # SSH agent socket for authentication
-      - ~/.gitconfig:/home/ctrl/.gitconfig:ro # Git config
+      - ${XDG_CONFIG_HOME:-$HOME/.config}/git:/home/ctrl/.config/git:ro # Git config
       - projects-data:/home/ctrl/projects # Projects directory
 
     environment:
