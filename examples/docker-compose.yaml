@@ -1,0 +1,33 @@
+---
+services:
+  base:
+    build:
+      context: .
+      args:
+        USERNAME: ${USERNAME:-ctrl}
+        USER_UID: ${USER_UID:-1000}
+        USER_GID: ${USER_GID:-1000}
+        DOCKER_GID: ${DOCKER_GID:-999}
+    image: sakkenix-base:latest
+    container_name: sakkenix-base
+    network_mode: host
+    stdin_open: true
+    tty: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Docker socket for DooD (Docker-outside-Docker)
+      - ${SSH_AUTH_SOCK}:/run/ssh-agent # SSH agent socket for authentication
+      - ~/.gitconfig:/home/ctrl/.gitconfig:ro # Git config
+      - projects-data:/home/ctrl/projects # Projects directory
+
+    environment:
+      - SSH_AUTH_SOCK=/run/ssh-agent # SSH agent forwarding
+
+      # Git identity (optional, uncomment if not using mounted .gitconfig)
+      # - GIT_AUTHOR_NAME=Your Name
+      # - GIT_AUTHOR_EMAIL=your.email@example.com
+      # - GIT_COMMITTER_NAME=Your Name
+      # - GIT_COMMITTER_EMAIL=your.email@example.com
+    
+volumes:
+  projects-data:
+    name: projects-data

@@ -1,11 +1,36 @@
 #!/bin/sh
 
+# Bootstrap script - runs as container user
+# Handles: Docker GID detection, AUR package installation
+
+# Runtime GID detection for Docker socket
+# Adjusts docker group to match the host's docker.sock GID
+if [ -S /var/run/docker.sock ]; then
+    HOST_DOCKER_GID=$(stat -c '%g' /var/run/docker.sock 2>/dev/null || stat -f '%g' /var/run/docker.sock 2>/dev/null || echo "")
+    CONTAINER_DOCKER_GID=$(getent group docker | cut -d: -f3)
+    
+    if [ -n "$HOST_DOCKER_GID" ] && [ "$HOST_DOCKER_GID" != "$CONTAINER_DOCKER_GID" ]; then
+        echo "Adjusting docker group GID from $CONTAINER_DOCKER_GID to $HOST_DOCKER_GID"
+        if ! sudo groupmod -g $HOST_DOCKER_GID docker 2>/dev/null; then
+            echo "Warning: Failed to adjust docker group GID" >&2
+        fi
+    fi
+fi
+
+# Install paru (AUR helper) if not already present
 install_paru() {
     paru_install_dir=$(mktemp -d)
 
     git clone https://aur.archlinux.org/paru.git "${paru_install_dir}"
-    cd "${paru_install_dir}" || exit
-    makepkg -si
+    cd "${paru_install_dir}" || exit 1
+    makepkg -si --noconfirm
+    cd - > /dev/null || exit 1
+    rm -rf "${paru_install_dir}"
 }
 
-install_paru
+if ! command -v paru > /dev/null 2>&1; then
+    echo "Installing paru..."
+    install_paru
+else
+    echo "paru already installed, skipping..."
+fi

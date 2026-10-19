@@ -1,0 +1,5 @@
+# Environment file with detected UID/GID values
+.env
+
+# Docker volumes (if using local testing)
+*.log
