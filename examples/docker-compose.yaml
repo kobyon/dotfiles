@@ -2,12 +2,11 @@
 services:
   base:
     build:
-      context: .
+      context: ..
       args:
         USERNAME: ${USERNAME:-ctrl}
         USER_UID: ${USER_UID:-1000}
         USER_GID: ${USER_GID:-1000}
-        DOCKER_GID: ${DOCKER_GID:-999}
     image: sakkenix-base:latest
     container_name: sakkenix-base
     network_mode: host
