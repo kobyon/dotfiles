@@ -4,7 +4,7 @@ An Arch Linux base image for specialized development containers. Provides a cons
 
 ## Purpose
 
-This is a **base image** designed to be extended by sub-containers for specialized environments (Puppet, Ansible, development, etc.). It is pushed to a container registry and inherited via `FROM sakkenix-base:latest`.
+This is a **base image** designed to be extended by child-containers for specialized environments (Puppet, Ansible, development, etc.). It is pushed to a container registry and inherited via `FROM sakkenix-base:latest`.
 
 ## What's Included
 
@@ -34,9 +34,9 @@ docker build \
 
 **Note:** Docker group GID is automatically adjusted at runtime to match the host's `docker.sock`, so no build-time configuration is needed for DooD.
 
-## Creating Sub-Containers
+## Creating Child-Containers
 
-Sub-containers inherit from this base and add specialized tooling:
+Child-containers inherit from this base and add specialized tooling:
 
 ```dockerfile
 FROM sakkenix-base:latest
@@ -118,7 +118,7 @@ dotfiles/
 
 The goal is to abstract the underlying OS into a well-tested base image that:
 
-- Provides a consistent Arch environment across all sub-containers
+- Provides a consistent Arch environment across all child-containers
 - Supports Docker-outside-Docker for sibling container management
 - Keeps dotfiles git-synced and version-controlled
-- Allows specialized sub-containers to inherit common tooling
+- Allows specialized child-containers to inherit common tooling
