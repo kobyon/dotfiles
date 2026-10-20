@@ -1,20 +1,5 @@
 #!/bin/sh
 
-install_paru() {
-    paru_install_dir=$(mktemp -d) || return 1
-
-    if ! (
-        cd "${paru_install_dir}" &&
-        git clone https://aur.archlinux.org/paru.git . &&
-        makepkg -si --noconfirm
-    ); then
-        rm -rf "${paru_install_dir}"
-        return 1
-    fi
-
-    rm -rf "${paru_install_dir}"
-}
-
 adjust_docker_group() {
     host_docker_gid=$(stat -c '%g' /var/run/docker.sock 2>/dev/null || stat -f '%g' /var/run/docker.sock 2>/dev/null || echo "")
     container_docker_gid=$(getent group docker | cut -d: -f3)
@@ -53,13 +38,6 @@ PROJECTS_DIR="/home/$(id -un)/projects"
 # Run each bootstrap step only when its prerequisite is present.
 if [ -S /var/run/docker.sock ]; then
     adjust_docker_group
-fi
-
-if command -v paru > /dev/null 2>&1; then
-    echo "paru already installed, skipping..."
-else
-    echo "Installing paru..."
-    install_paru || exit 1
 fi
 
 if [ -f "$REPOS_FILE" ]; then

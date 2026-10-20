@@ -28,7 +28,8 @@ It is **local-only**: built and run with `docker compose`, never pushed to a reg
 | Working dir | `/home/$USERNAME` |
 | Shell | `/usr/bin/zsh` |
 | Entrypoint | `/usr/local/bin/sakkenix-entrypoint` → runs `sakkenix-bootstrap`, then `exec "$@"` |
-| Bootstrap does | Aligns `docker` group GID to host `docker.sock`; installs `paru` (AUR helper); **clones repos from `/usr/local/share/sakkenix/repos.txt` if present** |
+| Image build does | Installs `paru` (AUR helper) once while building the image |
+| Bootstrap does | Aligns `docker` group GID to host `docker.sock`; **clones repos from `/usr/local/share/sakkenix/repos.txt` if present** |
 | AUR | Available via `paru`, **must run as non-root** (makepkg refuses root) |
 | Projects dir | `/home/$USERNAME/projects`, created and chowned in the image |
 | Repos mount point | `/usr/local/share/sakkenix/` — child-containers mount their `repos.txt` here |
@@ -199,7 +200,7 @@ Never assume an Arch package exists. Check before writing it into the Dockerfile
 docker run --rm ghcr.io/sakkenix-base:latest pacman -Ss <name>
 ```
 
-For AUR: `docker run --rm ghcr.io/sakkenix-base:latest paru -Ss <name>` (needs bootstrap to have run).
+For AUR: `docker run --rm ghcr.io/sakkenix-base:latest paru -Ss <name>` (requires an image built with `paru`).
 
 ## Step 5 — Verify before reporting done
 
@@ -220,7 +221,7 @@ Report actual output. If a step fails, say so and show the error.
 ## Pitfalls
 
 - **`ARG` does not survive `FROM`.** Redeclare `ARG USERNAME=ctrl` in the child Dockerfile or `$USERNAME` expands to empty and paths silently break.
-- **Overriding `ENTRYPOINT` drops the base bootstrap.** Only do it when explicitly requested, and always chain `sakkenix-bootstrap` first, or docker-group GID alignment and `paru` installation stop happening.
+- **Overriding `ENTRYPOINT` drops the base bootstrap.** Only do it when explicitly requested, and always chain `sakkenix-bootstrap` first, or docker-group GID alignment and repo cloning stop happening.
 - **Named volumes are seeded once.** Anything baked into `/home/$USERNAME/projects` at build time is copied into the volume on first creation only; later rebuilds will not update it. The base bootstrap clones at runtime instead.
 - **`paru`/`makepkg` refuse root.** AUR installs must happen as `$USERNAME`.
 - **`groupmod`, not `groupadd`.** Arch's `docker` package already creates the `docker` group; the base bootstrap re-GIDs it at runtime. Don't duplicate that logic.

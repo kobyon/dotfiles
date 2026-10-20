@@ -46,8 +46,14 @@ RUN mkdir -p /home/$USERNAME/projects && \
 # Create directory for repos.txt mount point (child-containers mount their repos list here)
 RUN mkdir -p /usr/local/share/sakkenix
 
-# Container defaults
 USER $USERNAME
+
+RUN paru_install_dir=$(mktemp -d) && \
+    git clone https://aur.archlinux.org/paru.git "$paru_install_dir" && \
+    cd "$paru_install_dir" && \
+    makepkg -si --noconfirm && \
+    rm -rf "$paru_install_dir"
+
 WORKDIR /home/$USERNAME
 SHELL ["/usr/bin/zsh", "-c"]
 ENTRYPOINT ["/usr/local/bin/sakkenix-entrypoint"]
