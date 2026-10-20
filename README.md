@@ -99,7 +99,7 @@ See the `examples/` directory for:
 ```plain
 dotfiles/
 ├── Dockerfile              # Base image definition
-├── bootstrap               # AUR package installation (runs as user)
+├── bootstrap               # Runtime setup for Docker, AUR, and repos (runs as user)
 ├── entrypoint              # Container entrypoint
 ├── examples/               # Example configurations
 │   ├── docker-compose.yml

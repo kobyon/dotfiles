@@ -1,36 +1,67 @@
 #!/bin/sh
 
-# Bootstrap script - runs as container user
-# Handles: Docker GID detection, AUR package installation
-
-# Runtime GID detection for Docker socket
-# Adjusts docker group to match the host's docker.sock GID
-if [ -S /var/run/docker.sock ]; then
-    HOST_DOCKER_GID=$(stat -c '%g' /var/run/docker.sock 2>/dev/null || stat -f '%g' /var/run/docker.sock 2>/dev/null || echo "")
-    CONTAINER_DOCKER_GID=$(getent group docker | cut -d: -f3)
-    
-    if [ -n "$HOST_DOCKER_GID" ] && [ "$HOST_DOCKER_GID" != "$CONTAINER_DOCKER_GID" ]; then
-        echo "Adjusting docker group GID from $CONTAINER_DOCKER_GID to $HOST_DOCKER_GID"
-        if ! sudo groupmod -g $HOST_DOCKER_GID docker 2>/dev/null; then
-            echo "Warning: Failed to adjust docker group GID" >&2
-        fi
-    fi
-fi
-
-# Install paru (AUR helper) if not already present
 install_paru() {
-    paru_install_dir=$(mktemp -d)
+    paru_install_dir=$(mktemp -d) || return 1
 
-    git clone https://aur.archlinux.org/paru.git "${paru_install_dir}"
-    cd "${paru_install_dir}" || exit 1
-    makepkg -si --noconfirm
-    cd - > /dev/null || exit 1
+    if ! (
+        cd "${paru_install_dir}" &&
+        git clone https://aur.archlinux.org/paru.git . &&
+        makepkg -si --noconfirm
+    ); then
+        rm -rf "${paru_install_dir}"
+        return 1
+    fi
+
     rm -rf "${paru_install_dir}"
 }
 
-if ! command -v paru > /dev/null 2>&1; then
-    echo "Installing paru..."
-    install_paru
-else
+adjust_docker_group() {
+    host_docker_gid=$(stat -c '%g' /var/run/docker.sock 2>/dev/null || stat -f '%g' /var/run/docker.sock 2>/dev/null || echo "")
+    container_docker_gid=$(getent group docker | cut -d: -f3)
+
+    if [ -n "$host_docker_gid" ] && [ "$host_docker_gid" != "$container_docker_gid" ]; then
+        echo "Adjusting docker group GID from $container_docker_gid to $host_docker_gid"
+        if ! sudo groupmod -g "$host_docker_gid" docker 2>/dev/null; then
+            echo "Warning: Failed to adjust docker group GID" >&2
+        fi
+    fi
+}
+
+clone_repos() {
+    echo "Cloning repos from $REPOS_FILE..."
+    mkdir -p "$PROJECTS_DIR"
+
+    while IFS= read -r url; do
+        case "$url" in ''|'#'*) continue ;; esac
+
+        name=$(basename "$url" .git)
+        dest="${PROJECTS_DIR}/${name}"
+
+        if [ -d "${dest}/.git" ]; then
+            echo "  ${name} exists, fetching..."
+            git -C "$dest" fetch --all --prune || echo "  Warning: fetch failed for ${name}" >&2
+        else
+            echo "  Cloning ${url}..."
+            git clone "$url" "$dest" || echo "  Warning: clone failed for ${name}" >&2
+        fi
+    done < "$REPOS_FILE"
+}
+
+REPOS_FILE=/usr/local/share/sakkenix/repos.txt
+PROJECTS_DIR="${HOME}/projects"
+
+# Run each bootstrap step only when its prerequisite is present.
+if [ -S /var/run/docker.sock ]; then
+    adjust_docker_group
+fi
+
+if command -v paru > /dev/null 2>&1; then
     echo "paru already installed, skipping..."
+else
+    echo "Installing paru..."
+    install_paru || exit 1
+fi
+
+if [ -f "$REPOS_FILE" ]; then
+    clone_repos
 fi

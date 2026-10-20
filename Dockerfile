@@ -43,6 +43,9 @@ COPY --chown=$USERNAME:$USERNAME home /home/$USERNAME
 RUN mkdir -p /home/$USERNAME/projects && \
     chown $USERNAME:$USERNAME /home/$USERNAME/projects
 
+# Create directory for repos.txt mount point (sub-containers mount their repos list here)
+RUN mkdir -p /usr/local/share/sakkenix
+
 # Container defaults
 USER $USERNAME
 WORKDIR /home/$USERNAME
