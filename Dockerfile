@@ -39,11 +39,11 @@ COPY --chmod=0755 entrypoint /usr/local/bin/sakkenix-entrypoint
 COPY --chmod=0755 bootstrap /usr/local/bin/sakkenix-bootstrap
 COPY --chown=$USERNAME:$USERNAME home /home/$USERNAME
 
-# Create projects directory for sub-containers to mount/use
+# Create projects directory for child-containers to mount/use
 RUN mkdir -p /home/$USERNAME/projects && \
     chown $USERNAME:$USERNAME /home/$USERNAME/projects
 
-# Create directory for repos.txt mount point (sub-containers mount their repos list here)
+# Create directory for repos.txt mount point (child-containers mount their repos list here)
 RUN mkdir -p /usr/local/share/sakkenix
 
 # Container defaults
