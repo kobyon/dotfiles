@@ -27,7 +27,7 @@ docker build \
 ### Build Arguments
 
 | Argument | Default | Description |
-|----------|---------|-------------|
+| -------- | ------- | ----------- |
 | `USERNAME` | `ctrl` | Username inside container |
 | `USER_UID` | `1000` | User UID (should match host user) |
 | `USER_GID` | `1000` | User GID (should match host user) |
@@ -66,11 +66,13 @@ ENTRYPOINT ["/usr/local/bin/puppet-entrypoint"]
 When running containers from this base image, you'll typically want to:
 
 ### Docker Socket (DooD)
+
 ```bash
 docker run -v /var/run/docker.sock:/var/run/docker.sock sakkenix-base:latest
 ```
 
 ### SSH Agent Forwarding
+
 ```bash
 # Create stable symlink on host
 ln -sf $SSH_AUTH_SOCK /tmp/ssh-agent-stable
@@ -80,6 +82,7 @@ docker run -v /tmp/ssh-agent-stable:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent sakke
 ```
 
 ### User Mapping
+
 ```bash
 # Match container user to host user
 docker run --user $(id -u):$(id -g) sakkenix-base:latest
@@ -88,11 +91,12 @@ docker run --user $(id -u):$(id -g) sakkenix-base:latest
 ## Examples
 
 See the `examples/` directory for:
+
 - `docker-compose.yaml` - Example orchestration with SSH agent and Docker socket
 
 ## File Structure
 
-```
+```plain
 dotfiles/
 ├── Dockerfile              # Base image definition
 ├── bootstrap               # AUR package installation (runs as user)
@@ -113,6 +117,7 @@ dotfiles/
 ## Philosophy
 
 The goal is to abstract the underlying OS into a well-tested base image that:
+
 - Provides a consistent Arch environment across all sub-containers
 - Supports Docker-outside-Docker for sibling container management
 - Keeps dotfiles git-synced and version-controlled
