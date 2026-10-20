@@ -48,7 +48,7 @@ clone_repos() {
 }
 
 REPOS_FILE=/usr/local/share/sakkenix/repos.txt
-PROJECTS_DIR="${HOME}/projects"
+PROJECTS_DIR="/home/$(id -un)/projects"
 
 # Run each bootstrap step only when its prerequisite is present.
 if [ -S /var/run/docker.sock ]; then
