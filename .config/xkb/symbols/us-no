@@ -1,0 +1,16 @@
+// English (US) with Norwegian letters on Right Alt (AltGr),
+// placed where they sit on a Norwegian keyboard. All other keys stay US.
+//   AltGr + [  -> å   (Shift: Å)
+//   AltGr + ;  -> ø   (Shift: Ø)
+//   AltGr + '  -> æ   (Shift: Æ)
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+    include "us(basic)"
+    name[Group1] = "English (US, Norwegian æøå on AltGr)";
+
+    key <AD11> { [ bracketleft, braceleft,  aring,  Aring  ] };
+    key <AC10> { [ semicolon,   colon,      oslash, Oslash ] };
+    key <AC11> { [ apostrophe,  quotedbl,   ae,     AE     ] };
+
+    include "level3(ralt_switch)"
+};
