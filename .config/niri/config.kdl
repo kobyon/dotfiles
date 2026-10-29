@@ -51,7 +51,10 @@ input {
         // off
         // natural-scroll
         // accel-speed 0.2
-        // accel-profile "flat"
+        // No mouse acceleration: pointer distance depends only on how far the
+        // mouse moves, not how fast. DMS doesn't set accel-profile, so its
+        // dms/input.kdl (included later) doesn't override this.
+        accel-profile "flat"
         // scroll-method "no-scroll"
     }
 
