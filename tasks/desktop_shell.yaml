@@ -6,5 +6,5 @@
     quiet: true
 
 - name: Install dux-shell
-  ansible.builtin.include_tasks: dux_shell.yaml
+  ansible.builtin.include_tasks: install_shell_dux.yaml
   when: desktop_shell == 'dux-shell'
