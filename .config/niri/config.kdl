@@ -30,44 +30,9 @@ input {
         numlock
     }
 
-    // Next sections include libinput settings.
-    // Omitting settings disables them, or leaves them at their default values.
-    // All commented-out settings here are examples, not defaults.
-    touchpad {
-        // off
-        tap
-        // dwt
-        // dwtp
-        // drag false
-        // drag-lock
-        natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "two-finger"
-        // disabled-on-external-mouse
-    }
-
-    mouse {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // No mouse acceleration: pointer distance depends only on how far the
-        // mouse moves, not how fast. DMS doesn't set accel-profile, so its
-        // dms/input.kdl (included later) doesn't override this.
-        accel-profile "flat"
-        // scroll-method "no-scroll"
-    }
-
-    trackpoint {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "on-button-down"
-        // scroll-button 273
-        // scroll-button-lock
-        // middle-emulation
-    }
+    // Mouse, touchpad and key repeat are owned by DMS (Settings window).
+    // It writes them to dms/input.kdl, included at the bottom of this file.
+    // Don't set them here: DMS's include is loaded later and wins anyway.
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
     // warp-mouse-to-focus
@@ -377,6 +342,9 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+D { spawn "fuzzel"; }
+    // Default apps come from xdg (~/.config/mimeapps.list), so changing the default needs no edit here.
+    Mod+B hotkey-overlay-title="Open the Default Browser" { spawn-sh "gtk-launch \"$(xdg-settings get default-web-browser)\""; }
+    Mod+E hotkey-overlay-title="Open the Default File Manager" { spawn-sh "xdg-open ~"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -393,12 +361,15 @@ binds {
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-    // Example media keys mapping using playerctl.
+    // Media keys via DMS's MPRIS control (playerctl isn't installed).
     // This will work with any MPRIS-enabled media player.
-    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioPlay        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioStop        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "next"; }
+    // HHKB (Mac mode): Fn+F sends Eject, next to the Fn+A/S/D volume keys.
+    // The HHKB never sends Fn itself, so e.g. Fn+Z can't be bound.
+    XF86Eject            allow-when-locked=true hotkey-overlay-title="Play / Pause Music (HHKB Fn+F)" { spawn "dms" "ipc" "call" "mpris" "playPause"; }
 
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
@@ -413,7 +384,8 @@ binds {
 
     Mod+Q repeat=false { close-window; }
 
-    // Modifier scheme (see ~/.config/niri/KEYBINDS.md):
+    // Modifier scheme (documented in the "dotfiles" Claude skill:
+    // ~/.claude/skills/dotfiles/references/niri-keybinds.md):
     //   Super            = navigate (focus)
     //   Super+Shift      = move the focused column/window the same way
     //   Super+Ctrl       = monitors (+Shift: move column, +Alt: move workspace)
@@ -441,10 +413,11 @@ binds {
     Mod+Shift+Right { move-column-right; }
 
     // First / last column, like Ctrl+A / Ctrl+E (start / end of line) in the shell.
-    Mod+A          hotkey-overlay-title="Focus First Column" { focus-column-first; }
-    Mod+E          hotkey-overlay-title="Focus Last Column" { focus-column-last; }
-    Mod+Shift+A    hotkey-overlay-title="Move Column to First" { move-column-to-first; }
-    Mod+Shift+E    hotkey-overlay-title="Move Column to Last" { move-column-to-last; }
+    // On Alt ("the bigger version" of H/L), since Mod+E opens the file manager.
+    Mod+Alt+A       hotkey-overlay-title="Focus First Column" { focus-column-first; }
+    Mod+Alt+E       hotkey-overlay-title="Focus Last Column" { focus-column-last; }
+    Mod+Alt+Shift+A hotkey-overlay-title="Move Column to First" { move-column-to-first; }
+    Mod+Alt+Shift+E hotkey-overlay-title="Move Column to Last" { move-column-to-last; }
     Mod+Home       { focus-column-first; }
     Mod+End        { focus-column-last; }
     Mod+Shift+Home { move-column-to-first; }
@@ -655,4 +628,4 @@ binds {
 include "dms/outputs.kdl"
 include "dms/windowrules.kdl"
 include "dms/binds.kdl"
-include "dms/input.kdl"
+include "dms/input.kdl" // mouse, touchpad, key repeat: change in DMS settings
