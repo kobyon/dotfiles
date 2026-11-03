@@ -2,6 +2,14 @@
 dotfiles_home: "{{ ansible_env.HOME }}"
 dotfiles_files: "{{ role_path }}/files"
 
+# Desktop shell to install: dux-shell | noctalia (noctalia has no tasks yet)
+desktop_shell: dux-shell
+
+# Installed with pacman for dux-shell (dms-shell pulls in quickshell)
+dux_shell_packages:
+  - dms-shell
+  - matugen
+
 # Every symlink the role creates. src is relative to files/ (or absolute),
 # dest is relative to $HOME. Folders are linked whole.
 dotfiles_links:

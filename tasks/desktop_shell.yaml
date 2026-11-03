@@ -1,0 +1,10 @@
+---
+- name: Check the desktop_shell value
+  ansible.builtin.assert:
+    that: desktop_shell in ['dux-shell', 'noctalia']
+    fail_msg: "desktop_shell must be dux-shell or noctalia, got '{{ desktop_shell }}'"
+    quiet: true
+
+- name: Install dux-shell
+  ansible.builtin.include_tasks: dux_shell.yaml
+  when: desktop_shell == 'dux-shell'

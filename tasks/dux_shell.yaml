@@ -1,0 +1,12 @@
+---
+- name: Notice - dux-shell is only available on CachyOS
+  ansible.builtin.debug:
+    msg: >-
+      dux-shell installation is currently only supported on CachyOS
+      (dms-shell comes from the CachyOS repos). Other distros are not supported yet.
+
+- name: Install dux-shell packages
+  community.general.pacman:
+    name: "{{ dux_shell_packages }}"
+    state: present
+  become: true

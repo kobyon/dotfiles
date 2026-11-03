@@ -44,3 +44,7 @@
   loop: "{{ dotfiles_git_repos }}"
   loop_control:
     label: "{{ item.dest }}"
+
+- name: Install the desktop shell
+  ansible.builtin.include_tasks: desktop_shell.yaml
+  when: desktop_shell
