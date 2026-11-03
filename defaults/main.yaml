@@ -4,6 +4,13 @@ dotfiles_files: "{{ role_path }}/files"
 
 # Desktop shell to install: dux-shell | noctalia (noctalia has no tasks yet)
 desktop_shell: dux-shell
+# Remove the shells that are not selected (only noctalia is supported so far)
+desktop_shell_prune: false
+
+# Removed with pacman when pruning noctalia (noctalia-qs is its quickshell fork)
+noctalia_packages:
+  - noctalia-shell
+  - noctalia-qs
 
 # Installed with pacman for dux-shell (dms-shell pulls in quickshell)
 dux_shell_packages:

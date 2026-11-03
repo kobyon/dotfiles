@@ -1,0 +1,7 @@
+---
+# Settings in ~/.config/noctalia are left alone
+- name: Uninstall noctalia packages
+  community.general.pacman:
+    name: "{{ noctalia_packages }}"
+    state: absent
+  become: true

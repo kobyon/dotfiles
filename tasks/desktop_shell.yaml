@@ -5,6 +5,13 @@
     fail_msg: "desktop_shell must be dux-shell or noctalia, got '{{ desktop_shell }}'"
     quiet: true
 
+# Before the install: noctalia-qs conflicts with quickshell, which dms-shell needs
+- name: Uninstall noctalia
+  ansible.builtin.include_tasks: remove_shell_noctalia.yaml
+  when:
+    - desktop_shell != 'noctalia'
+    - desktop_shell_prune | bool
+
 - name: Install dux-shell
   ansible.builtin.include_tasks: install_shell_dux.yaml
   when: desktop_shell == 'dux-shell'
