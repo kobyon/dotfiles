@@ -625,7 +625,7 @@ binds {
 }
 
 // DMS Include Configs
-include "dms/outputs.kdl"
-include "dms/windowrules.kdl"
-include "dms/binds.kdl"
-include "dms/input.kdl" // mouse, touchpad, key repeat: change in DMS settings
+include optional=true "dms/outputs.kdl"
+include optional=true "dms/windowrules.kdl"
+include optional=true "dms/binds.kdl"
+include optional=true "dms/input.kdl" // mouse, touchpad, key repeat: change in DMS settings

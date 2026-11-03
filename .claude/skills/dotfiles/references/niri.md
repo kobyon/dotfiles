@@ -7,10 +7,10 @@ Version 26.04. Config: `~/.config/niri/config.kdl`. All keybinds are listed in `
 - `config.kdl` is niri's default config, customised. Sections: `input`, `output`, `layout`, `spawn-at-startup`, `window-rule`, `binds`.
 - At the bottom it includes DMS-generated files, in this order:
   ```
-  include "dms/outputs.kdl"
-  include "dms/windowrules.kdl"
-  include "dms/binds.kdl"
-  include "dms/input.kdl"
+  include optional=true "dms/outputs.kdl"
+  include optional=true "dms/windowrules.kdl"
+  include optional=true "dms/binds.kdl"
+  include optional=true "dms/input.kdl"
   ```
   Later wins (DMS `binds.kdl` only adds `Mod+Return`). Inside `input`, most fields merge one by one, but a whole `xkb { }` block **replaces** an earlier one. If DMS ever writes `xkb { … }` into `dms/input.kdl`, your `layout "us-no,no"` disappears. See `dankshell.md`.
 - `binds` is laid out by the modifier scheme: navigate, then move (Shift), monitors (Ctrl), workspace (Alt). Each letter bind comes first and carries the `hotkey-overlay-title`. Arrow/Page/Home/End fallbacks follow without titles.

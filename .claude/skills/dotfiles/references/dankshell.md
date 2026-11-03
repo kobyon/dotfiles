@@ -4,7 +4,7 @@ DMS v2.0.0 draws the bar, launcher, control centre, lock screen, and so on. It r
 
 ## Where its settings live
 
-- `~/.config/DankMaterialShell/settings.json` is the source of truth for everything set in the DMS settings window. Keys include `barConfigs`, `mouseAccelSpeed`, `mouseAccelProfile`, `keyboardTrackLayout`, `keyboardRepeatRate` and `cursorSettings`.
+- `~/.config/DankMaterialShell/settings.json` (a link to `~/.config/dms/`) is the source of truth for everything set in the DMS settings window. Keys include `barConfigs`, `mouseAccelSpeed`, `mouseAccelProfile`, `keyboardTrackLayout`, `keyboardRepeatRate` and `cursorSettings`. It is **not** in the dotfiles repo, because it differs per computer.
 - From those settings DMS **generates** niri snippets in `~/.config/niri/dms/*.kdl`. Each one is headed "DO NOT EDIT" and gets overwritten. To change one, change the setting in DMS, or override it in `config.kdl`; an override only wins if it comes *after* the include, or if DMS doesn't set that field.
   - `outputs.kdl`: monitor modes and positions (DP-5, DP-9, DP-7, then the laptop eDP-1, left to right).
   - `input.kdl`: mouse, touchpad and keyboard settings. Watch for two things here:
@@ -13,6 +13,8 @@ DMS v2.0.0 draws the bar, launcher, control centre, lock screen, and so on. It r
     
     Both have happened before. The fix is to clear the keyboard-layout options in DMS settings.
   - `binds.kdl`: `Mod+Return` → alacritty. `windowrules.kdl`: DMS's own windows open floating.
+- When DMS writes them: `input.kdl` is regenerated **every time DMS starts** (`NiriService.qml`, `Component.onCompleted`), and `outputs.kdl` when displays change in DMS settings.
+- `~/.config/niri/dms/` is **local to each machine and not tracked** (it's gitignored inside the linked niri folder). `config.kdl` uses `include optional=true "dms/….kdl"`, so niri still loads on a fresh machine before DMS has generated them.
 - Open the settings window: `dms ipc call settings open` or `dms ipc call settings openWith <tab>`.
 
 ## IPC and CLI

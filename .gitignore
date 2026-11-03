@@ -4,11 +4,8 @@
 # Runtime files that land inside the linked folders under files/
 files/niri/*.backup*
 files/niri/*.dmsbackup*
-files/niri/dms/colors.kdl
-files/niri/dms/cursor.kdl
-files/niri/dms/layout.kdl
-files/niri/dms/alttab.kdl
-files/niri/dms/wpblur.kdl
+# DMS generates these per machine; config.kdl includes them as optional
+files/niri/dms/
 files/xkb/*.backup
 files/nvim/plugged/
 files/nvim/autoload/
