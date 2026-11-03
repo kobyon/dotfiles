@@ -1,50 +1,54 @@
 # The dotfiles repo
 
-- Checkout: `~/projects/dotfiles` (remote `git@github.com:kobyon/dotfiles.git`, private).
-- Paths in the repo mirror `$HOME`: `~/.config/niri/config.kdl` ↔ `<repo>/.config/niri/config.kdl`.
-- `$HOME` itself is also a work tree of a bare repo at `~/.local/share/dotfiles/git`; the `.justfile` recipe `dot-pull` pulls it (`git --git-dir=~/.local/share/dotfiles/git --work-tree=$HOME pull --rebase --autostash`). Deploying a branch there drops files straight into `$HOME`.
+- Checkout: `~/projects/dotfiles` on this host (remote `git@github.com:kobyon/dotfiles.git`, private). On other hosts it can live anywhere; find it with `readlink -f ~/.config/niri`.
+- The repo root is an **Ansible role**. `dotfiles.yaml` runs it against localhost, with no sudo, and it only touches `$HOME`.
+- `files/<program>/` holds static config, **one folder per program**, linked whole: `~/.config/niri` → `<repo>/files/niri`. Editing a live file edits the repo, so there is no copy step.
+- **The repo contains no symlinks.** Every link is an entry in `dotfiles_links` (`defaults/main.yaml`): `{ src: <path under files/ or absolute>, dest: <path under $HOME> }`.
+- `home/` is the old `$HOME`-mirror config, kept for reference and **not deployed**. Don't edit it for live changes.
+- Retired: the bare repo (`~/.local/share/dotfiles/git.retired`), the `dotfiles` alias, `just dot-pull`, and all git submodules.
 
-## Ignore-everything rule
+## Current links
 
-`.gitignore` starts with `*` and only whitelists a few paths. So:
-
-- Stage files explicitly with `git add -f <path>`. Already-tracked files update with a plain `git add <path>`.
-- Never `git add -A`, `git add .` or `git add -f <directory>`: the mirrored tree contains secrets such as `~/.claude/.credentials.json` and `~/.ssh` keys.
-- Check `git status -s` before committing; it should list only the files you meant.
-
-## Syncing a change from $HOME
-
-```bash
-cd ~/projects/dotfiles
-cp ~/.config/niri/config.kdl .config/niri/config.kdl
-git add -f .config/niri/config.kdl
-```
-
-Diff first — the user sometimes edits files by hand, and the live file is the source of truth. To see which tracked desktop files changed in `$HOME`:
-
-```bash
-cd ~/projects/dotfiles
-for f in $(git ls-files .config/niri .config/xkb); do cmp -s "$f" "$HOME/$f" || echo "changed: $f"; done
-```
-
-If nothing is listed, the repo is already in sync; say so and offer to commit if anything is staged.
-
-`~/.config/DankMaterialShell/settings.json` is **not** tracked. It holds all DMS settings (bar layout, mouse, keyboard). Ask the user before adding it; it can contain machine-specific values.
-
-### Tracked desktop files
-
-| Path | Notes |
+| dest (`$HOME`) | src (`files/`) |
 |---|---|
-| `.config/niri/config.kdl` | main niri config |
-| `.config/niri/dms/{outputs,windowrules,binds,input}.kdl` | DMS-generated, but included by config.kdl, so niri can't load without them |
-| `.config/xkb/symbols/us-no`, `.config/xkb/rules/evdev.xml` | custom keyboard layout |
-| `.claude/skills/dotfiles/` | this skill (symlinked to `~/.config/claude/skills/dotfiles`) |
+| `.config/niri` | `niri` (config.kdl + `dms/` includes) |
+| `.config/xkb` | `xkb` (us-no layout) |
+| `.config/shell`, `.profile`, `.zprofile` | `shell`, `shell/profile` |
+| `.config/git`, `.config/nvim`, `.config/task`, `.config/npm`, `.config/hypr` | same name |
+| `.config/user-dirs.dirs`, `.config/user-dirs.conf` | `user-dirs/…` (single files) |
+| `.config/wgetrc` | `wget/wgetrc` |
+| `.justfile` | `just/justfile` |
+| `.config/Code/User` | `vscode` (settings.json, mcp.json) |
+| `.local/share/vscode/user-data/User/{settings,mcp}.json` | `vscode/…` (single files; the rest of that folder is VS Code state and stays local) |
+| `.config/claude/skills/dotfiles` | `<repo>/.claude/skills/dotfiles` (this skill) |
 
-Not tracked on purpose: `config.kdl.backup*`, DMS files config.kdl doesn't include (`colors`, `layout`, `alttab`, `cursor`, `wpblur`), `xkb/input-sources.backup`.
+## Commands (run in the repo)
+
+- `just apply`: create or refresh the links, and clone oh-my-zsh/p10k if they're missing.
+- `just check`: dry run with diff.
+
+## Syncing a change
+
+1. Edit the live file; it is inside a linked folder, so the edit lands in the repo.
+2. `git status -s`: stage what you meant to change with `git add <path>`.
+
+**Tracking a new program:** `mv ~/.config/<prog> files/<prog>`, add `{ src: <prog>, dest: .config/<prog> }` to `dotfiles_links`, and run `just apply`. Add runtime files it writes (caches, backups, history) to `.gitignore`. Never commit secrets or personal data (keys, tokens, emails).
+
+## Gitignored runtime files inside linked folders
+
+Root `.gitignore` covers these:
+- niri: `config.kdl.backup*`/`dmsbackup*` and the DMS files config.kdl doesn't include (`colors`, `cursor`, `layout`, `alttab`, `wpblur`). The four included ones (`outputs`, `windowrules`, `binds`, `input`) are tracked, so DMS changes to them show in `git status`.
+- nvim: `plugged/`, `autoload/`.
+- shell: `oh-my-zsh/`, `powerlevel10k/`, `.zcompdump*`, history.
+- git: `SSH_*_SETUP.md` (they contain personal emails).
+
+`files/ssh/` (public keys, readme, old `config-*` files) is a **backup only, not linked**. Don't add it to `dotfiles_links`: `~/.ssh` holds private keys, and `~/.ssh/config` is generated by another Ansible playbook.
+
+Not tracked on purpose: `~/.config/DankMaterialShell/settings.json` (ask before adding; it has machine-specific values), `~/.ssh/config`, and VS Code's `pgsql.*` connection settings. `vscode/mcp.json` takes secrets through `${input:…}` prompts, so never put literal tokens in it.
 
 ## Branches and commits
 
-- `main`, per-host branches (`host-cachyos`), feature branches (`feat-niri`).
-- Commit messages: conventional style, `type(scope): summary`, e.g. `feat(niri): …`, `fix(ssh): …`, `chore(ansible): …`. Scope = the program.
+- `feat-niri` is the base of the new layout. `main`, `host-cachyos` and `main-docker` still have the old layout.
+- Commit messages: conventional style, `type(scope): summary`, e.g. `feat(niri): …`, `fix(ssh): …`, `chore(ansible): …`. Scope = the program; use `dotfiles` for role changes.
 - End every commit message with the org trailer: `Co-Authored-By: Bifrost <bifrost@upheads.no>`.
 - Only commit or push when the user asks.

@@ -5,13 +5,13 @@ description: Manage and document the user's Linux desktop and dotfiles. Use this
 
 # dotfiles
 
-The user's desktop: **niri** (Wayland compositor) + **DankMaterialShell** (bar/shell), driven from an **HHKB** keyboard. Configs live in `$HOME` and are mirrored into the repo `~/projects/dotfiles`.
+The user's desktop: **niri** (Wayland compositor) + **DankMaterialShell** (bar/shell), driven from an **HHKB** keyboard. Config folders in `$HOME` (`~/.config/niri`, …) are symlinks into the repo `~/projects/dotfiles/files/<program>` (an Ansible role), so live edits are repo edits.
 
 Read only the reference you need:
 
 | Topic | Reference |
 |---|---|
-| Repo layout, syncing, git/commit rules | `references/repo.md` |
+| Repo layout, Ansible role, syncing, git/commit rules | `references/repo.md` |
 | niri config, includes, validation, gotchas | `references/niri.md` |
 | Every keybind + the modifier scheme | `references/niri-keybinds.md` |
 | DMS: generated files, settings, IPC, widgets | `references/dankshell.md` |
@@ -22,7 +22,7 @@ Read only the reference you need:
 1. Check the live file first — the user also edits by hand. For a new bind: confirm the key is free (duplicate check in niri.md), fits the modifier scheme, and that the program it launches is installed (`command -v`). If you had to pick the key yourself, propose it and let the user choose.
 2. Edit the live file in `$HOME` (never DMS-generated files — see dankshell.md), then validate: `niri validate -c ~/.config/niri/config.kdl` (niri auto-reloads on save).
 3. Update the matching reference so the docs match the config. Keybind changes always update `niri-keybinds.md` — it is the user's cheat sheet. This skill folder *is* in the repo, so reference edits need no copying.
-4. Copy changed `$HOME` files into the repo and stage them (see repo.md).
+4. Live files are already in the repo (linked folders). Check `git status -s` in the repo and stage the changed paths (see repo.md).
 5. Commit or push only when the user asks.
 
 These references are the documentation. When a new area of the dotfiles comes up, add a new `references/<topic>.md` and a row above, rather than growing this file.

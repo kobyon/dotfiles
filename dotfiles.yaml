@@ -1,0 +1,12 @@
+---
+# Deploy dotfiles into $HOME on this machine.
+# Run from anywhere the repo is cloned:  just apply   (or: ansible-playbook dotfiles.yaml)
+- name: Dotfiles
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  gather_subset: [min]
+  tasks:
+    - name: Apply the dotfiles role from this checkout
+      ansible.builtin.include_role:
+        name: "{{ playbook_dir }}"

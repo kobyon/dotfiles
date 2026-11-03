@@ -1,0 +1,30 @@
+---
+dotfiles_home: "{{ ansible_env.HOME }}"
+dotfiles_files: "{{ role_path }}/files"
+
+# Every symlink the role creates. src is relative to files/ (or absolute),
+# dest is relative to $HOME. Folders are linked whole.
+dotfiles_links:
+  - { src: niri, dest: .config/niri }
+  - { src: xkb, dest: .config/xkb }
+  - { src: shell, dest: .config/shell }
+  - { src: shell/profile, dest: .profile }
+  - { src: shell/profile, dest: .zprofile }
+  - { src: git, dest: .config/git }
+  - { src: nvim, dest: .config/nvim }
+  - { src: task, dest: .config/task }
+  - { src: npm, dest: .config/npm }
+  - { src: hypr, dest: .config/hypr }
+  - { src: user-dirs/user-dirs.dirs, dest: .config/user-dirs.dirs }
+  - { src: user-dirs/user-dirs.conf, dest: .config/user-dirs.conf }
+  - { src: wget/wgetrc, dest: .config/wgetrc }
+  - { src: just/justfile, dest: .justfile }
+  - { src: vscode, dest: .config/Code/User }
+  - { src: vscode/settings.json, dest: .local/share/vscode/user-data/User/settings.json }
+  - { src: vscode/mcp.json, dest: .local/share/vscode/user-data/User/mcp.json }
+  - { src: "{{ role_path }}/.claude/skills/dotfiles", dest: .config/claude/skills/dotfiles }
+
+# Cloned if missing, never updated. They land inside the linked shell folder (gitignored).
+dotfiles_git_repos:
+  - { repo: https://github.com/ohmyzsh/ohmyzsh.git, dest: .config/shell/zsh/oh-my-zsh }
+  - { repo: https://github.com/romkatv/powerlevel10k.git, dest: .config/shell/zsh/custom/themes/powerlevel10k }

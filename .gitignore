@@ -1,10 +1,21 @@
-# By default ignore all
-*
+*.retry
+*.pre-dotfiles
 
-# Spesific rules
-*.zcompdump
-!.config/
-!.config/shell/
-!.config/shell/zsh/
-!.config/shell/zsh/custom/
-!.config/shell/zsh/custom/*.zsh
+# Runtime files that land inside the linked folders under files/
+files/niri/*.backup*
+files/niri/*.dmsbackup*
+files/niri/dms/colors.kdl
+files/niri/dms/cursor.kdl
+files/niri/dms/layout.kdl
+files/niri/dms/alttab.kdl
+files/niri/dms/wpblur.kdl
+files/xkb/*.backup
+files/nvim/plugged/
+files/nvim/autoload/
+files/shell/zsh/oh-my-zsh/
+files/shell/zsh/custom/themes/powerlevel10k/
+files/shell/zsh/.zcompdump*
+files/shell/zsh/.zsh_history
+files/shell/zsh/.zshrc.pre-oh-my-zsh
+# contains personal emails, kept local
+files/git/SSH_*_SETUP.md

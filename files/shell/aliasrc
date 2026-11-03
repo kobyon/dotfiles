@@ -1,0 +1,28 @@
+# sudo not required for some system commands
+for sudo_command in mount umount sv pacman apt updatedb su shutdown poweroff reboot ; do
+	alias ${sudo_command}="sudo ${sudo_command}"
+done; unset sudo_command
+
+alias vim="nvim"
+alias nvchad="NVIM_APPNAME=nvim-nvchad ${HOME}/.local/bin/nvim.appimage"
+
+# Make applications support XDG
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+alias ls="ls -hN --color=auto --group-directories-first"
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias ip="ip -color=auto"
+
+alias ijust='just --justfile ${HOME}/.justfile'
+
+alias voxbox='podman run -it --rm -v ${PWD}:/repo --entrypoint "" voxpupuli/voxbox:8'
+alias voxbox-rake='podman run -it --rm -v ${PWD}:/repo --entrypoint "rake" voxpupuli/voxbox:8 -f /Rakefile'
+alias voxbox-sh='podman run -it --rm \
+-v ${PWD}:/repo \
+-v ${PWD}:/etc/puppetlabs/code/environments/production \
+--entrypoint "ash" ghcr.io/voxpupuli/voxbox:8'
+alias search='grep -I -r -n --exclude-dir=_archive --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.venv'

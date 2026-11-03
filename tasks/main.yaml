@@ -1,0 +1,46 @@
+---
+- name: Inspect link destinations
+  ansible.builtin.stat:
+    path: "{{ dotfiles_home }}/{{ item.dest }}"
+  loop: "{{ dotfiles_links }}"
+  loop_control:
+    label: "{{ item.dest }}"
+  register: _dest
+
+# Never overwrite: a real file or folder in the way is kept as <dest>.pre-dotfiles
+- name: Move existing files and folders aside
+  ansible.builtin.command:
+    cmd: mv -n "{{ item.stat.path }}" "{{ item.stat.path }}.pre-dotfiles"
+    creates: "{{ item.stat.path }}.pre-dotfiles"
+  loop: "{{ _dest.results }}"
+  loop_control:
+    label: "{{ item.item.dest }}"
+  when: item.stat.exists and not item.stat.islnk
+
+- name: Create parent folders
+  ansible.builtin.file:
+    path: "{{ (dotfiles_home ~ '/' ~ item.dest) | dirname }}"
+    state: directory
+  loop: "{{ dotfiles_links }}"
+  loop_control:
+    label: "{{ item.dest }}"
+
+- name: Create symlinks
+  ansible.builtin.file:
+    src: "{{ item.src if item.src is abs else dotfiles_files ~ '/' ~ item.src }}"
+    dest: "{{ dotfiles_home }}/{{ item.dest }}"
+    state: link
+    force: true
+  loop: "{{ dotfiles_links }}"
+  loop_control:
+    label: "{{ item.dest }}"
+
+- name: Clone shell plugins
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ dotfiles_home }}/{{ item.dest }}"
+    depth: 1
+    update: false
+  loop: "{{ dotfiles_git_repos }}"
+  loop_control:
+    label: "{{ item.dest }}"
