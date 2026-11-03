@@ -35,6 +35,9 @@
   loop_control:
     label: "{{ item.dest }}"
 
+- name: Install the terminal shell
+  ansible.builtin.include_tasks: install_shell_zsh.yaml
+
 - name: Clone shell plugins
   ansible.builtin.git:
     repo: "{{ item.repo }}"

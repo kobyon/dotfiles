@@ -17,6 +17,11 @@ dux_shell_packages:
   - dms-shell
   - matugen
 
+# Installed with pacman for the terminal shell (git is needed to clone oh-my-zsh)
+zsh_packages:
+  - zsh
+  - git
+
 # Every symlink the role creates. src is relative to files/ (or absolute),
 # dest is relative to $HOME. Folders are linked whole.
 dotfiles_links:

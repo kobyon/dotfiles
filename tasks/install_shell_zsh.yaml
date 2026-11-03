@@ -1,0 +1,19 @@
+---
+- name: Install zsh packages
+  community.general.pacman:
+    name: "{{ zsh_packages }}"
+    state: present
+  become: true
+
+- name: Set zsh as the login shell
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
+  become: true
+
+# HISTFILE in .zshrc points here; zsh does not create the folder
+- name: Create the zsh history folder
+  ansible.builtin.file:
+    path: "{{ dotfiles_home }}/.cache/zsh"
+    state: directory
+    mode: "0755"
