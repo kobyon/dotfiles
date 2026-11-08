@@ -165,6 +165,7 @@ On the HHKB, Print is `Fn+I`, so all screenshots also have Fn-free binds on `S`:
 | `Fn+S`       | Volume up                 |
 | `Fn+D`       | Mute                      |
 | `Fn+F`       | **Play / pause music** (the HHKB's Eject key) |
+| `Fn+Esc`     | Nothing (power key disabled with a no-op bind on `XF86PowerOff`) |
 
 These work even when the screen is locked. Play/pause, next, previous and stop keys on other keyboards also control the music, through DMS (`dms ipc call mpris …`), with any MPRIS player such as Spotify.
 
