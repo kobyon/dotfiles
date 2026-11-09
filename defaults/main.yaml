@@ -17,6 +17,14 @@ dux_shell_packages:
   - dms-shell
   - matugen
 
+# Programs the niri config binds keys to (Mod+T, Mod+D, brightness keys) and EDITOR.
+# Already installed ones are left alone.
+desktop_packages:
+  - alacritty
+  - fuzzel
+  - brightnessctl
+  - neovim
+
 # Installed with pacman for the terminal shell (git is needed to clone oh-my-zsh)
 zsh_packages:
   - zsh

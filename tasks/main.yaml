@@ -48,6 +48,9 @@
   loop_control:
     label: "{{ item.dest }}"
 
+- name: Install desktop packages
+  ansible.builtin.include_tasks: install_desktop_packages.yaml
+
 - name: Install the desktop shell
   ansible.builtin.include_tasks: desktop_shell.yaml
   when: desktop_shell

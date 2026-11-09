@@ -1,7 +1,7 @@
 # The dotfiles repo
 
 - Checkout: `~/projects/dotfiles` on this host (remote `git@github.com:kobyon/dotfiles.git`, private). On other hosts it can live anywhere; find it with `readlink -f ~/.config/niri`.
-- The repo root is an **Ansible role**. `dotfiles.yaml` runs it against localhost, with no sudo, and it only touches `$HOME`.
+- The repo root is an **Ansible role**. `dotfiles.yaml` runs it against localhost. The link tasks only touch `$HOME`; the package tasks use `become` (pacman), so `just apply` asks for the sudo password.
 - `files/<program>/` holds static config, **one folder per program**, linked whole: `~/.config/niri` → `<repo>/files/niri`. Editing a live file edits the repo, so there is no copy step.
 - **The repo contains no symlinks.** Every link is an entry in `dotfiles_links` (`defaults/main.yaml`): `{ src: <path under files/ or absolute>, dest: <path under $HOME> }`.
 - `home/` is the old `$HOME`-mirror config, kept for reference and **not deployed**. Don't edit it for live changes.
