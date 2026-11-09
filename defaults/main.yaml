@@ -34,7 +34,6 @@ dotfiles_links:
   - { src: nvim, dest: .config/nvim }
   - { src: task, dest: .config/task }
   - { src: npm, dest: .config/npm }
-  - { src: hypr, dest: .config/hypr }
   - { src: user-dirs/user-dirs.dirs, dest: .config/user-dirs.dirs }
   - { src: user-dirs/user-dirs.conf, dest: .config/user-dirs.conf }
   - { src: wget/wgetrc, dest: .config/wgetrc }

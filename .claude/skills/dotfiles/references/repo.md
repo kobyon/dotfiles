@@ -14,7 +14,7 @@
 | `.config/niri` | `niri` (config.kdl; `dms/` inside is local, not tracked) |
 | `.config/xkb` | `xkb` (us-no layout) |
 | `.config/shell`, `.profile`, `.zprofile` | `shell`, `shell/profile` |
-| `.config/git`, `.config/nvim`, `.config/task`, `.config/npm`, `.config/hypr` | same name |
+| `.config/git`, `.config/nvim`, `.config/task`, `.config/npm` | same name |
 | `.config/user-dirs.dirs`, `.config/user-dirs.conf` | `user-dirs/…` (single files) |
 | `.config/wgetrc` | `wget/wgetrc` |
 | `.justfile` | `just/justfile` |

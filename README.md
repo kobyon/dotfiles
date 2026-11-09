@@ -22,8 +22,7 @@ just apply
 ## Layout
 
 ```
-files/<program>/   static config, one folder per program (niri, xkb, shell, git, nvim, task, npm, hypr, vscode, ssh*, …)
-home/              leftover old config (readmes), not deployed
+files/<program>/   static config, one folder per program (niri, xkb, shell, git, nvim, task, npm, vscode, ssh*, …)
                    * files/ssh is a backup only, not linked
 defaults/main.yaml dotfiles_links (src under files/ -> dest under $HOME), shell plugin clones
 tasks/             the role
