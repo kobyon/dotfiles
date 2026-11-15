@@ -39,7 +39,8 @@
 - name: Install the terminal shell
   ansible.builtin.include_tasks: install_shell_zsh.yaml
 
-- name: Clone shell plugins
+# update: false, so the cloned version never changes after the first run
+- name: Clone shell plugins # noqa: latest[git]
   ansible.builtin.git:
     repo: "{{ item.repo }}"
     dest: "{{ dotfiles_home }}/{{ item.dest }}"
