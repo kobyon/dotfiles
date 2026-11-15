@@ -1,5 +1,5 @@
 ---
-dotfiles_home: "{{ ansible_env.HOME }}"
+dotfiles_home: "{{ ansible_facts['env']['HOME'] }}"
 dotfiles_files: "{{ role_path }}/files"
 
 # Desktop shell to install: dux-shell | noctalia (noctalia has no tasks yet).
