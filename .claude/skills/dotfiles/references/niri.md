@@ -49,7 +49,7 @@ grep -hE '^\s*(Mod|Super|Alt|Ctrl|Shift|Print|XF86)\S*\s' ~/.config/niri/config.
 - **xkb layout switching:** use niri's `switch-layout` bind (`Alt+Space`), not an xkb `grp:` option. Having both makes one key switch twice.
 - **HHKB:** arrows, PageUp/Down and Home/End need Fn. Prefer letter keys. The HHKB never sends Fn itself (see `hhkb.md`).
 - **`playerctl` is not installed.** Media binds use `dms ipc call mpris playPause|next|previous|stop`.
-- `spawn-at-startup "waybar"` is a leftover: waybar isn't installed, and DMS draws the bar.
+- Nothing is spawned at startup for the bar: DMS runs from its systemd user service `dms.service` (`WantedBy=graphical-session.target`), which the dotfiles role enables.
 
 ## Default apps
 

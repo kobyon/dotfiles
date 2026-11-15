@@ -2,7 +2,7 @@
 
 # Create/refresh the symlinks
 apply:
-    ansible-playbook dotfiles.yaml
+    ansible-playbook dotfiles.yaml -K
 
 # Dry run with diff
 check:

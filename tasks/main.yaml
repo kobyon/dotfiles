@@ -21,6 +21,7 @@
   ansible.builtin.file:
     path: "{{ (dotfiles_home ~ '/' ~ item.dest) | dirname }}"
     state: directory
+    mode: "0755"
   loop: "{{ dotfiles_links }}"
   loop_control:
     label: "{{ item.dest }}"
@@ -38,7 +39,8 @@
 - name: Install the terminal shell
   ansible.builtin.include_tasks: install_shell_zsh.yaml
 
-- name: Clone shell plugins
+# update: false, so the cloned version never changes after the first run
+- name: Clone shell plugins # noqa: latest[git]
   ansible.builtin.git:
     repo: "{{ item.repo }}"
     dest: "{{ dotfiles_home }}/{{ item.dest }}"
@@ -50,4 +52,4 @@
 
 - name: Install the desktop shell
   ansible.builtin.include_tasks: desktop_shell.yaml
-  when: desktop_shell
+  when: desktop_shell is defined
