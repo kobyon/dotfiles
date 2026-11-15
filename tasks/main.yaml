@@ -50,4 +50,4 @@
 
 - name: Install the desktop shell
   ansible.builtin.include_tasks: desktop_shell.yaml
-  when: desktop_shell
+  when: desktop_shell is defined
