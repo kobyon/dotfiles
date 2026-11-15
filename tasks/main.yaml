@@ -21,6 +21,7 @@
   ansible.builtin.file:
     path: "{{ (dotfiles_home ~ '/' ~ item.dest) | dirname }}"
     state: directory
+    mode: "0755"
   loop: "{{ dotfiles_links }}"
   loop_control:
     label: "{{ item.dest }}"
