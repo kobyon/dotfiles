@@ -18,7 +18,7 @@ just apply
 `just apply` installs packages with pacman, so run it from a terminal inside the running session (it enables a systemd *user* service). It does this:
 
 - Moves any existing config at a link destination (e.g. `~/.config/niri`) to `<dest>.pre-dotfiles`.
-- Replaces noctalia with dux-shell (DMS), because `noctalia-qs` conflicts with `quickshell`. Set `desktop_shell_prune: false` to skip the removal.
+- Installs dux-shell (DMS). Removing noctalia is off by default (`desktop_shell_prune: false`), but `noctalia-qs` conflicts with `quickshell`, so on a machine that still has noctalia run `ansible-playbook dotfiles.yaml -K -e desktop_shell_prune=true` instead of `just apply`.
 - Enables `dms.service`, installs zsh and makes it the login shell.
 
 **Log out and back in afterwards**: the DMS shell, the new niri config and the zsh login shell all start with the next session. Keep a TTY (Ctrl+Alt+F3) handy the first time.

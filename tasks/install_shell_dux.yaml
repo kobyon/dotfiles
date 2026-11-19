@@ -11,10 +11,10 @@
     state: present
   become: true
 
-# Only enabled, not started: it comes up with the graphical session on the next login
-- name: Enable the dms user service
+# pacman doesn't enable user services. Without this nothing starts DMS:
+# no bar, no wallpaper (niri's gray background). Starts with the next niri session.
+- name: Enable the DMS user service
   ansible.builtin.systemd_service:
     name: dms.service
     scope: user
     enabled: true
-    daemon_reload: true

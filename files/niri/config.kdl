@@ -240,8 +240,8 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-// The bar/shell (DMS) is started by its systemd user service (dms.service),
-// enabled by the Ansible role, so nothing is spawned here.
+// The bar is drawn by DMS, started by its systemd user service (dms.service,
+// enabled by the dotfiles role), not from here.
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -622,6 +622,10 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Ctrl+P hotkey-overlay-title="Monitor: Power Off" { power-off-monitors; }
+
+    // The HHKB sends XF86PowerOff on Fn+Esc. niri takes the power key from logind
+    // and suspends on it unless a bind matches, so this no-op bind disables it.
+    XF86PowerOff allow-when-locked=true hotkey-overlay-title=null { spawn "true"; }
 }
 
 // DMS Include Configs

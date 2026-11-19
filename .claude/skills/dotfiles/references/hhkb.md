@@ -26,7 +26,7 @@ Mac-mode Fn layer, taken from the manual's table:
 | `Fn+N` / `Fn+M` / `Fn+H` / `Fn+J` | keypad + − * / | free for binds; keypad keysyms are the same in both layouts |
 | `Fn+1…=` | F1–F12 | |
 | `Fn+`` ` | Delete | |
-| `Fn+Esc` | Power | |
+| `Fn+Esc` | XF86PowerOff | disabled: no-op niri bind (niri would otherwise suspend) |
 
 Combinations like `Fn+Z` send nothing on their own (Fn+Z+Delete deletes a pairing, Fn+Q starts pairing). Changing the Fn layer requires PFU's Keymap Tool, which only runs on Windows and macOS. Print exists only as `Fn+I`, so screenshots also have Fn-free binds on `Super+…+S`.
 
