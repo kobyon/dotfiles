@@ -1,0 +1,6 @@
+---
+- name: Install desktop packages
+  community.general.pacman:
+    name: "{{ desktop_packages }}"
+    state: present
+  become: true
